@@ -17,7 +17,7 @@ Getting Started
 
 To get started, simply upload the phin_Framwork files to you local or remote server and go to the directory
 you installed it in in a web browser.
-**NOTE - Since the _system/config.php doesn't not exist by default, we will create it.  The app looks for
+**NOTE - Since the _system/config.php does not exist by default, we will create it.  The app looks for
 _system/config.php file and if does not exist (and on a fresh install it should not), the app will redirect
 you to the installation page automatically.
 
