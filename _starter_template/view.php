@@ -32,12 +32,12 @@ $activate_table_filter = TRUE;
                     </thead>
                     </form>
                     <tbody>
-                        <?php while ($row = sqlsrv_fetch_array($records_all)) { ?>
-                        <form name="manage" action="../../../gatherville/modules/_starter_template/crud_update.php" method="post">
+                       <?php while ($row = $_SESSION['FETCH_ARRAY']($records_all)){ ?> 
+                        <form name="manage" action="crud_update.php" method="post">
                         <tr>
                             <td>VALUE</td>
-                            <td><button class="btn btn-mini btn-info" type="button">Update</button></td>
-                            <td><button class="btn btn-mini btn-danger" type="button">Delete</button></td>
+                            <td><button name="crud_update" class="btn btn-mini btn-info" type="button">Update</button></td>
+                            <td><button name="delete" class="btn btn-mini btn-danger" type="button" onClick="return confirm('Are you sure you want to delete')">Delete</button></td>
                         </tr>
                         <input name="ID" type="hidden" value="<?php echo trim($row['ID']); ?>" />
                         </form>

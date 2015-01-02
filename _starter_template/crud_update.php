@@ -1,5 +1,5 @@
 <?php
-/* .CRUD_CREATE */
+/* .CRUD_UPDATE */
 /*****************************************************************/
 include('../templates/admin_header.php');
 include('controller.php');
@@ -29,17 +29,18 @@ include('controller.php');
                 <fieldset>  
         
 					<legend></legend>
+                    <?php while ($row = $_SESSION['FETCH_ARRAY']($record_by_id)){ ?>
                         
                         <form name="manage" action="<?php echo current_page_Url(); ?>" method="post" role="form" >                    
                             
                             <div class="col-xs-4">
                             First Name:<br />
-                            <input name="NAME_FIRST" type="text" class="form-control" value="" />
+                            <input name="NAME_FIRST" type="text" class="form-control" value="<?php echo $row['NAME_FIRST']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
                             Last Name:<br />
-                            <input name="NAME_LAST" type="text" class="form-control" value="" />
+                            <input name="NAME_LAST" type="text" class="form-control" value="<?php echo $row['NAME_LAST']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">
@@ -48,12 +49,12 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             Email:<br />
-                            <input name="EMAIL" type="email" class="form-control" value="" />
+                            <input name="EMAIL" type="email" class="form-control" value="<?php echo $row['EMAIL']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
                             	Password:<br />
-                            	<input name="PASSWORD" type="password" class="form-control" value="" />
+                            	<input name="PASSWORD" type="password" class="form-control" value="<?php echo $row['PASSWORD']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">
@@ -62,7 +63,7 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             Role:<br />
-                            <?php html_list_Roles('',"class='form-control'"); ?>
+                            <?php html_list_Roles($row['ROLE_ID'],'class="form-control"'); ?>
                           	</div>
                             
                           	<div class="col-xs-8">
@@ -72,10 +73,12 @@ include('controller.php');
                           	<div class="col-xs-4">
                           		<button name="cancel" class="btn btn-danger btn-outline"> Cancel </button>
                           		<button name="update" class="btn btn-success btn-outline"> Save </button>
-                          		<input name="USER_ID" type="hidden" value="<?php echo $row['ID']; ?>" />               
+                          		<input name="USER_ID" type="hidden" value="<?php echo $row['USER_ID']; ?>" />               
                           	</div>
                         </form>
-                                        
+                        
+                    <?php } ?>
+                
                 </fieldset> 
         
                     </div>

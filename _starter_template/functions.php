@@ -14,8 +14,8 @@
 		
 		foreach ($_POST as $key => $value) 
 		{
-			// x_ = add to posted vars you don't want included here
-			if(!in_array($ignore) and strpos($key, 'x_') === false) // $ignore = _system/config.php
+			// x_ = add to posted vars you don't want included here that are not listed in $_SESSION['ignore']
+			if(!in_array($key,$_SESSION['ignore']) and strpos($key, 'x_') === FALSE) // $_SESSION['ignore'] = _system/config.php
 			{
 			  $value = cleanInput_Security($value,'encrypt');
 			  $data_columns.= $key.",";
@@ -29,13 +29,11 @@
 			  ($data_columns) 
 			  VALUES ($data_values) " ;
 		
-		$result = sqlsrv_query($_SESSION['connection'],$sql);
+		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 		
 		// error reporting 
 		if($result === false) 
-		{ 
-		error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result);
-		}
+		{ error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result); }
 		
 		$message = 'created';
 		
@@ -57,13 +55,11 @@
 		
 		$sql.= " ORDER BY fields ";
 		
-		$result = sqlsrv_query($_SESSION['connection'],$sql);
+		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 		
 		// error reporting 
 		if($result === false) 
-		{ 
-		  error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result);
-		}
+		{ error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result); }
 		
 		return $result;
 	}
@@ -83,20 +79,24 @@
 		if($id !== FALSE)
 		{ $sql.= " AND ID = '$id' "; }  
 		
-		$result = sqlsrv_query($_SESSION['connection'],$sql);
+		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 		
 		// error reporting 
 		if($result === false) 
-		{ 
-		  error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result);
-		}
+		{ error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result); }
 		
 		// loop over row and create vars
-		while($data = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC))
+		// create array of values from this record
+		$array = array();
+		$data = $_SESSION['FETCH_ARRAY']($result);
+
+		foreach($data as $key => $value) // creates assocative array
 		{
-			$id = $data['id'];
-		}
-		return array('id' => $id);
+			if(!is_numeric($key))
+			{ $array = array_merge($array, array(strtolower($key) => $value)); }
+		}  
+		
+		return $array;
 	}
 /*****************************************************************/
 
@@ -110,8 +110,8 @@
 		$data_update = "";
 		foreach ($_POST as $key => $value) 
 		{
-			// x_ = add to posted vars you don't want included here
-			if(!in_array($ignore) and strpos($key, 'x_') === false) // $ignore = _system/config.php
+			// x_ = add to posted vars you don't want included here that are not listed in $_SESSION['ignore']
+			if(!in_array($key,$_SESSION['ignore']) and strpos($key, 'x_') === FALSE) // $_SESSION['ignore'] = _system/config.php
 			{
 		  		$value = cleanInput_Security($value,'encrypt');
 				$data_update.= $key." = '".$value."',";
@@ -124,13 +124,11 @@
 				WHERE ID = '$_POST[ID]'
 			   ";
 			 
-	  	$result = sqlsrv_query($_SESSION['connection'],$sql);
+	  	$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
 	  	// error reporting 
 	  	if($result === false) 
-	  	{ 
-	  		error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result);
-	  	}
+	  	{ error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result); }
 	}
 /*****************************************************************/
 
@@ -146,13 +144,11 @@
 			$sql = "DELETE FROM your_table_name_goes_here
 					WHERE id = '$id' ";
 						  
-			$result = sqlsrv_query($_SESSION['connection'],$sql);
+			$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 			
 			// error reporting 
 			if($result === false) 
-			{ 
-			  error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result);
-			}
+			{ error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result); }
 		}
 	}
 /*****************************************************************/
@@ -164,22 +160,20 @@
 */
 	function html_list_($id=FALSE,$values=FALSE)
 	{
-	  $sql = " SELECT * FROM your_table_name_goes_here ";	
+	  $sql = ' SELECT '.COLUMNS_your_table_name_goes_here.' FROM your_table_name_goes_here ';	
 	  $sql.= ' ORDER BY column';
 	  
-	  $result = sqlsrv_query($_SESSION['connection'],$sql);
+	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
 	  // error reporting 
 	  if($result === false) 
-	  { 
-	  	error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result);
-	  }
+	  {	error_report_Helpers('Error Message to User HERE - file location and function name HERE',$sql,$result); }
 	  
 	  echo '<select name="id" "'.$values.'">';
 	  while($row = sqlsrv_fetch_array($result))
 	  {
-		if($row['id'] == $id){ $selected="selected"; }else{ $selected=""; }
-		echo '<option value="'.$row['id'].'" '.$selected.'>'.$row['value'].'</option>';  
+		if($row['ID'] == $id){ $selected="selected"; }else{ $selected=""; }
+		echo '<option value="'.$row['ID'].'" '.$selected.'>'.$row['your_value'].'</option>';  
 	  }
 	  echo '</select>';
 	}
