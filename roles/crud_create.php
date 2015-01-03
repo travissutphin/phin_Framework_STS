@@ -30,7 +30,7 @@ include('controller.php');
 
 					<legend></legend>    
 
-                        <form name="manage" action="view.php" method="post" role="form">                    
+                        <form name="manage" action="<?php echo current_page_Url(); ?>" method="post" role="form">                    
                             
                             <div class="col-xs-4">
                             	Role:<br />

@@ -36,7 +36,7 @@
 
 		// error reporting 
 		if($result === false) 
-		{ error_report_Helpers('Error Creating Role - (create_Roles)',$sql); }
+		{ error_report_Helpers('Error Creating Role - (create_Roles)',$sql,$result); }
 	  
 		$message = 'created';
 		
@@ -64,7 +64,7 @@
 		
 		// error reporting 
 		if($result === false) 
-		{ error_report_Helpers('Error Reading Role - (read_Roles)',$sql); }
+		{ error_report_Helpers('Error Reading Role - (read_Roles)',$sql,$result); }
 		
 		return $result;
 	}
@@ -91,7 +91,7 @@
 		// error reporting 
 		if($result === false) 
 		{ 
-		  error_report_Helpers('Error Reading Role Values - (read_values_Roles)',$sql);
+		  error_report_Helpers('Error Reading Role Values - (read_values_Roles)',$sql,$result);
 		}	  	
 		
 		// create array of values from this record
@@ -138,7 +138,7 @@
 		
 		// error reporting 
 		if($result === false) 
-		{ error_report_Helpers('Error Updating Role - (update_Roles)',$sql); }	
+		{ error_report_Helpers('Error Updating Role - (update_Roles)',$sql,$result); }	
 		
 		$message = 'updated';
 		
@@ -165,7 +165,7 @@
 	
 		// error reporting 
 		if($result === false) 
-		{ error_report_Helpers('Error Deleting Role - (delete_Roles)',$sql); }
+		{ error_report_Helpers('Error Deleting Role - (delete_Roles)',$sql,$result); }
 		
 		$message = 'deleted';
 	  
@@ -189,7 +189,7 @@
 
 	  // error reporting 
 	  if($result === false) 
-	  { error_report_Helpers('Error Creating Roles HTML List - roles.functions.html_list_Roles',$sql); }
+	  { error_report_Helpers('Error Creating Roles HTML List - (html_list_Roles)',$sql,$result); }
 	  
 	  echo '<select name="ROLE_ID" '.$values.'>';
 	  while($data = $_SESSION['FETCH_ARRAY']($result))

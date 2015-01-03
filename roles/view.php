@@ -42,9 +42,7 @@ include('controller.php');
                                 	<!--<input name="name" type="text" value="<?php //echo $row['NAME']; ?>" class="form-control" />-->
                                 </td>                                    
                             	<td>
-                            	<a href="#">
-                              		<button name="crud_update" class="btn btn-info btn-xs btn-outline">Update</button>
-                            	</a>
+                              	<button name="crud_update" class="btn btn-info btn-xs btn-outline">Update</button>
                             	<?php if($row['ROLE_ID'] != "1" and $row['ROLE_ID'] != "2") { ?>
                             	<button name="delete" class="btn btn-danger btn-xs btn-outline" onClick="return confirm('Are you sure you want to delete')">Delete</button>
                             	<?php } ?>
