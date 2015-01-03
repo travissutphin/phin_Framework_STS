@@ -104,16 +104,17 @@
 		
 		//--- event_users ---//
 		$sql = "CREATE TABLE ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_users
-				(USER_ID INT NOT NULL AUTO_INCREMENT ,
+				(USER_ID INT(11) NOT NULL AUTO_INCREMENT ,
 				 NAME_FIRST VARCHAR(50) NULL ,
 				 NAME_LAST VARCHAR(50) NULL ,
 				 EMAIL VARCHAR(50) NULL ,
 				 PASSWORD VARCHAR(50) NULL ,
-				 ROLE_ID INT NOT NULL ,
+				 ROLE_ID INT(11) NOT NULL ,
 				 CREATED_AT DATETIME NOT NULL ,
 				 UPDATED_AT DATETIME NOT NULL ,
 				 DELETED_AT DATETIME NOT NULL ,
-				 PRIMARY KEY (USER_ID) ); ";
+				 PRIMARY KEY (USER_ID)
+				)ENGINE=InnoDB";
 		if(!mysql_query($sql,$conn))
 		{
 			echo 'error: '.mysql_error();
@@ -121,9 +122,10 @@
 		}
 		//--- event_roles ---//
 		$sql = "CREATE TABLE ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_roles
-				(ROLE_ID INT NOT NULL AUTO_INCREMENT ,
+				(ROLE_ID INT(11) NOT NULL AUTO_INCREMENT ,
 				 ROLE VARCHAR(55) NULL ,
-				 PRIMARY KEY (ROLE_ID) ); ";
+				 PRIMARY KEY (ROLE_ID)
+				)ENGINE=InnoDB";
 		if(!mysql_query($sql,$conn))
 		{
 			echo 'error: '.mysql_error();
