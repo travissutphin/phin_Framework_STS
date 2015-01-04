@@ -25,7 +25,7 @@
   * @param	
   * @return 
 */
-	$ignore = array("create", "update", "delete", "multiselect", "ID");
+	$_SESSION['ignore'] = array("create", "update", "delete", "multiselect", "USER_ID", "ROLE_ID");
 	
 /*****************************************************************/	
 
