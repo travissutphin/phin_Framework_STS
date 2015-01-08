@@ -9,12 +9,12 @@
 */
 	function validate_Login()
 	{			  
-		$email = cleanInput_Security($_POST['EMAIL']);
-		$password = cleanInput_Security($_POST['PASSWORD']);
+		$email = cleanInput_Security($_POST['USERS_EMAIL']);
+		$password = cleanInput_Security($_POST['USERS_PASSWORD']);
 		
 		$sql = 'SELECT '.COLUMNS_SYSTEM_TBL_USERS.' FROM system_tbl_users users ';	
-	  	$sql.= " WHERE users.EMAIL = '".$email."' ";	
-	  	$sql.= "   AND users.PASSWORD = '".$password."' ";  
+	  	$sql.= " WHERE users.USERS_EMAIL = '".$email."' ";	
+	  	$sql.= "   AND users.USERS_PASSWORD = '".$password."' ";  
 
 echo $sql;
 
@@ -22,9 +22,7 @@ echo $sql;
 		
 		// error reporting 
 		if($result === false) 
-		{ 
-			error_report_Helpers('Error Validating Login - login.functions.validate_Login',$sql,$result);
-		}
+		{ error_report_Helpers('Error Validating Login - (validate_Login)',$sql,$result); }
 	
 		$num_rows = $_SESSION['NUM_ROWS']($result);
 		  
@@ -32,7 +30,7 @@ echo $sql;
 		{
 			while($row = $_SESSION['FETCH_ARRAY']($result))
 			{	
-				set_variables_Login($row['ID']); // save session vars for this user
+				set_variables_Login($row['user_ID']); // save session vars for this user
 				header( 'Location: ../control_panel/' ) ;
 				exit;
 			}
@@ -63,10 +61,10 @@ echo $sql;
 	  	while ($row = $_SESSION['FETCH_ARRAY']($result))
 	  	{	
 			$_SESSION['users.is_logged_in'] = TRUE ;
-		 	$_SESSION['users.id'] = $row['ID'] ;
-		 	$_SESSION['users.email'] = $row['EMAIL'] ;
-		 	$_SESSION['users.name_first'] = $row['NAME_FIRST'] ;
-		 	$_SESSION['users.name_last'] = $row['NAME_LAST'] ;
+		 	$_SESSION['users.id'] = $row['USER_ID'] ;
+		 	$_SESSION['users.email'] = $row['USERS_EMAIL'] ;
+		 	$_SESSION['users.name_first'] = $row['USERS_NAME_FIRST'] ;
+		 	$_SESSION['users.name_last'] = $row['USERS_NAME_LAST'] ;
 		 	$_SESSION['users.role_id'] = $row['ROLE_ID'] ;
  		 	$value_roles = read_values_Roles($row['ROLE_ID']);
 			$_SESSION['users.role'] = $value_roles['name'];

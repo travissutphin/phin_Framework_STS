@@ -38,8 +38,7 @@ include('controller.php');
                             <form name="manage" action="crud_update.php" method="post">
                             <tr>
                             	<td>
-                                	<?php echo $row['ROLE']; ?>
-                                	<!--<input name="name" type="text" value="<?php //echo $row['NAME']; ?>" class="form-control" />-->
+                                	<?php echo $row['ROLE_NAME']; ?>
                                 </td>                                    
                             	<td>
                               	<button name="crud_update" class="btn btn-info btn-xs btn-outline">Update</button>

@@ -58,7 +58,7 @@
 		if($id !== FALSE)
 		{ $sql.= " WHERE roles.ROLE_ID = '$id' "; }  
 		
-		$sql.= ' ORDER BY roles.ROLE ';
+		$sql.= ' ORDER BY roles.ROLE_NAME ';
 		
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 		
@@ -84,7 +84,7 @@
 		
 		// by id
 		if($id !== FALSE)
-		{ $sql.= " WHERE roles.ROLE_ID = '".$id."' "; }  
+		{ $sql.= " WHERE roles.ROLE_ID = '$id' "; }  
 		
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 			
@@ -183,7 +183,7 @@
 	function html_list_Roles($id=FALSE,$values=FALSE)
 	{
 	  $sql = ' SELECT '.COLUMNS_SYSTEM_TBL_ROLES.' FROM system_tbl_roles roles ';	
-	  $sql.= ' ORDER BY roles.ROLE';
+	  $sql.= ' ORDER BY roles.ROLE_NAME';
 	  
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
@@ -195,7 +195,7 @@
 	  while($data = $_SESSION['FETCH_ARRAY']($result))
 	  {
 		if($data['ROLE_ID'] == $id){ $selected="selected"; }else{ $selected=""; }
-		echo '<option value="'.$data['ROLE_ID'].'" '.$selected.'>'.$data['ROLE'].'</option>';  
+		echo '<option value="'.$data['ROLE_ID'].'" '.$selected.'>'.$data['ROLE_NAME'].'</option>';  
 	  }
 	  echo '</select>';
 	}

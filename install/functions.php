@@ -104,15 +104,15 @@
 		
 		//--- event_users ---//
 		$sql = "CREATE TABLE ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_users
-				(USER_ID INT(11) NOT NULL AUTO_INCREMENT ,
-				 NAME_FIRST VARCHAR(50) NULL ,
-				 NAME_LAST VARCHAR(50) NULL ,
-				 EMAIL VARCHAR(50) NULL ,
-				 PASSWORD VARCHAR(50) NULL ,
-				 ROLE_ID INT(11) NOT NULL ,
-				 CREATED_AT DATETIME NOT NULL ,
-				 UPDATED_AT DATETIME NOT NULL ,
-				 DELETED_AT DATETIME NOT NULL ,
+				(USER_ID INT NOT NULL AUTO_INCREMENT ,
+				 USER_NAME_FIRST VARCHAR(50) NULL ,
+				 USER_NAME_LAST VARCHAR(50) NULL ,
+				 USER_EMAIL VARCHAR(50) NULL ,
+				 USER_PASSWORD VARCHAR(50) NULL ,
+				 USER_ROLE_ID INT(11) NOT NULL ,
+				 USER_CREATED_AT DATETIME NOT NULL ,
+				 USER_UPDATED_AT DATETIME NOT NULL ,
+				 USER_DELETED_AT DATETIME NOT NULL ,
 				 PRIMARY KEY (USER_ID)
 				)ENGINE=InnoDB";
 		if(!mysql_query($sql,$conn))
@@ -120,10 +120,11 @@
 			echo 'error: '.mysql_error();
 			exit;
 		}
+
 		//--- event_roles ---//
 		$sql = "CREATE TABLE ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_roles
-				(ROLE_ID INT(11) NOT NULL AUTO_INCREMENT ,
-				 ROLE VARCHAR(55) NULL ,
+				(ROLE_ID INT NOT NULL AUTO_INCREMENT ,
+				 ROLE_NAME VARCHAR(55) NULL ,
 				 PRIMARY KEY (ROLE_ID)
 				)ENGINE=InnoDB";
 		if(!mysql_query($sql,$conn))
@@ -131,13 +132,32 @@
 			echo 'error: '.mysql_error();
 			exit;
 		}
-		
+
+		//--- case_manager ---//
+		$sql = "CREATE TABLE ".$_SESSION['database'].".".$_SESSION['prefix']."case_manager
+				(CASE_ID INT NOT NULL AUTO_INCREMENT ,
+				 USER_ID INT NULL ,
+				 CASE_TYPE_ID INT NULL ,
+				 ERROR_DESCRIPTION TEXT NULL ,
+				 RECREATE_ERROR TEXT NULL ,
+				 PRIORITY VARCHAR(50) NULL ,
+				 OPERATING_SYSTEM VARCHAR(100) NULL ,
+				 BROWSER VARCHAR(100) NULL ,
+				 SOLUTION TEXT NULL
+				 PRIMARY KEY (BUG_ID)
+				)ENGINE=InnoDB";
+		if(!mysql_query($sql,$conn))
+		{
+			echo 'error: '.mysql_error();
+			exit;
+		}
+				
 		//--- insert users ---//
-		$sql = mysql_query("INSERT INTO ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_users (NAME_FIRST, NAME_LAST, EMAIL, ROLE_ID, PASSWORD) VALUES ('default', 'user', 'email', 1, 'password')");
+		$sql = mysql_query("INSERT INTO ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_users (USER_NAME_FIRST, USER_NAME_LAST, USER_EMAIL, USER_ROLE_ID, USER_PASSWORD) VALUES ('default', 'user', 'email', 1, 'password')");
 		
 		//--- insert roles ---//
-		$sql = mysql_query("INSERT INTO ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_roles (ROLE) VALUES ('Admin')");				
-		$sql = mysql_query("INSERT INTO ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_roles (ROLE) VALUES ('Member')");
+		$sql = mysql_query("INSERT INTO ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_roles (ROLE_NAME) VALUES ('Admin')");				
+		$sql = mysql_query("INSERT INTO ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_roles (ROLE_NAME) VALUES ('Member')");
 	}
 ##########################################################################	
 ?>

@@ -35,12 +35,12 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             First Name:<br />
-                            <input name="NAME_FIRST" type="text" class="form-control" value="<?php echo $row['NAME_FIRST']; ?>" />
+                            <input name="USER_NAME_FIRST" type="text" class="form-control" value="<?php echo $row['USER_NAME_FIRST']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
                             Last Name:<br />
-                            <input name="NAME_LAST" type="text" class="form-control" value="<?php echo $row['NAME_LAST']; ?>" />
+                            <input name="USER_NAME_LAST" type="text" class="form-control" value="<?php echo $row['USER_NAME_LAST']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">
@@ -49,12 +49,12 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             Email:<br />
-                            <input name="EMAIL" type="email" class="form-control" value="<?php echo $row['EMAIL']; ?>" />
+                            <input name="USER_EMAIL" type="email" class="form-control" value="<?php echo $row['USER_EMAIL']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
                             	Password:<br />
-                            	<input name="PASSWORD" type="password" class="form-control" value="<?php echo $row['PASSWORD']; ?>" />
+                            	<input name="USER_PASSWORD" type="password" class="form-control" value="<?php echo $row['USER_PASSWORD']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">

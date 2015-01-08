@@ -40,10 +40,10 @@ include('controller.php');
                             <tbody>
                             <?php while ($row = $_SESSION['FETCH_ARRAY']($records_all)){ ?>                      
                               <tr>
-                                <td><?php echo $row['NAME_FIRST']; ?></td>
-                                <td><?php echo $row['NAME_LAST']; ?></td>
-                                <td><?php echo $row['EMAIL']; ?></td>                                           
-                                <td><?php echo $row['ROLE']; ?></td>
+                                <td><?php echo $row['USER_NAME_FIRST']; ?></td>
+                                <td><?php echo $row['USER_NAME_LAST']; ?></td>
+                                <td><?php echo $row['USER_EMAIL']; ?></td>                                           
+                                <td><?php echo $row['ROLE_NAME']; ?></td>
                                 <td>
                                 <form name="manage" action="crud_update.php" method="post">
                                     <input name="crud_update" type="submit" class="btn btn-info btn-xs btn-outline" value="Update">

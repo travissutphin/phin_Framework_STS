@@ -4,12 +4,10 @@
 <file name="functions.php" server="ftp.sutphinfamily.com" local="130464907800000000" remote="130464907800000000" />
 <file name="index.php" server="ftp.sutphinfamily.com" local="130464907800000000" remote="130464907800000000" />
 <file name="view.php" server="ftp.sutphinfamily.com" local="130464907800000000" remote="130464907800000000" />
-<file name="view_create.php" server="ftp.sutphinfamily.com" local="130464907800000000" remote="130464907800000000" />
-<file name="controller.php" server="184.175.109.25" local="130643804914921215" remote="130643768400000000" />
-<file name="functions.php" server="184.175.109.25" local="130643818679386957" remote="130643782200000000" />
-<file name="index.php" server="184.175.109.25" local="130464907800000000" remote="130638146400000000" />
-<file name="view.php" server="184.175.109.25" local="130643804390439561" remote="130643767800000000" />
-<file name="view_create.php" server="184.175.109.25" local="130464907800000000" remote="130638146400000000" />
-<file name="crud_create.php" server="184.175.109.25" local="130643794311636969" remote="130643758200000000" />
-<file name="crud_update.php" server="184.175.109.25" local="130643810932634626" remote="130643774400000000" />
+<file name="controller.php" server="184.175.109.25" local="130643804914921215" remote="130647724800000000" />
+<file name="functions.php" server="184.175.109.25" local="130651649247728448" remote="130651612800000000" />
+<file name="index.php" server="184.175.109.25" local="130464907800000000" remote="130647724800000000" />
+<file name="view.php" server="184.175.109.25" local="130651649545441324" remote="130651613400000000" />
+<file name="crud_create.php" server="184.175.109.25" local="130651650197745284" remote="130651614000000000" />
+<file name="crud_update.php" server="184.175.109.25" local="130651649905223548" remote="130651613400000000" />
 </dwsync>

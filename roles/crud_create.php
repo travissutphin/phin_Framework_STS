@@ -34,7 +34,7 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             	Role:<br />
-                            	<input name="ROLE" type="text" class="form-control" value="<?php echo $_SESSION['ROLE']; ?>" />
+                            	<input name="ROLE_NAME" type="text" class="form-control" value="<?php echo $_SESSION['ROLE_NAME']; ?>" />
                             </div>
                             
                           	<div class="col-xs-8">

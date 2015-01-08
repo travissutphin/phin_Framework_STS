@@ -12,12 +12,12 @@
 		// set needed variables
 		$createdAt = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
 		
-		if(!isset($_POST['PASSWORD']) or $_POST['PASSWORD'] == "")
-		{ $_POST['PASSWORD'] = random_string_Helpers();	} // create random password
+		if(!isset($_POST['USER_PASSWORD']) or $_POST['USER_PASSWORD'] == "")
+		{ $_POST['USER_PASSWORD'] = random_string_Helpers();	} // create random password
 		
 		if(!isset($_POST['ROLE_ID'])) { $_POST['ROLE_ID'] = '2'; } // set role_id if not passed in post
 		
-		if(!validate_Email($_POST['EMAIL']))
+		if(!validate_Email($_POST['USER_EMAIL']))
 		{			
 			$message = 'email_invalid';
 			
@@ -30,7 +30,7 @@
 		}
 		else
 		{
-			$num_rows = read_Users(FALSE,$_POST['EMAIL']);	
+			$num_rows = read_Users(FALSE,$_POST['USER_EMAIL']);	
 			if($_SESSION['NUM_ROWS']($num_rows))
 			{
 				$message = 'email_duplicate';
@@ -104,9 +104,9 @@
 	  
 	  // by email
 	  if($email !== FALSE)
-	  {	$sql.= " AND users.EMAIL = '$email' "; }
+	  {	$sql.= " AND users.USER_EMAIL = '$email' "; }
 	  
-	  $sql.= ' ORDER BY users.NAME_LAST, users.NAME_FIRST ';
+	  $sql.= ' ORDER BY users.USER_NAME_LAST, users.USER_NAME_FIRST ';
 	  
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
@@ -126,7 +126,7 @@
 */
 	function read_values_Users($id=FALSE)
 	{
-		$sql = 'SELECT '.COLUMNS_SYSTEM_TBL_USERS.' FROM system_tbl_users ';	
+		$sql = 'SELECT '.COLUMNS_SYSTEM_TBL_USERS.' FROM system_tbl_users users ';	
 		
 		// by id
 		if($id !== FALSE)
@@ -159,7 +159,7 @@
 */
 	function update_Users()
 	{	  	
-		if(!validate_Email($_POST['EMAIL'])) // check for valid email
+		if(!validate_Email($_POST['USER_EMAIL'])) // check for valid email
 		{ $message = 'email_invalid'; }
 		else // update
 		{			
@@ -236,7 +236,7 @@
 	  if($role_id != FALSE)
 	  { $sql.= " WHERE users.ROLE_ID = '$role_id' "; }
 	  
-	  $sql.= ' ORDER BY users.NAME_LAST, users.NAME_FIRST ';
+	  $sql.= ' ORDER BY users.USER_NAME_LAST, users.USER_NAME_FIRST ';
 	  
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
@@ -247,8 +247,8 @@
 	  echo '<select name="user_id" "'.$values.'">';
 	  while($data = $_SESSION['FETCH_ARRAY']($result))
 	  {
-		if($data['ID'] == $id){ $selected="selected"; }else{ $selected=""; }
-		echo '<option value="'.$data['ID'].'" '.$selected.'>'.$data['NAME_FIRST'].' '.$data['NAME_LAST'].'</option>';  
+		if($data['USER_ID'] == $id){ $selected="selected"; }else{ $selected=""; }
+		echo '<option value="'.$data['USER_ID'].'" '.$selected.'>'.$data['USER_NAME_FIRST'].' '.$data['USER_NAME_LAST'].'</option>';  
 	  }
 	  echo '</select>';
 	}

@@ -30,16 +30,16 @@ include('controller.php');
 
 					<legend></legend>    
 
-                        <form name="manage" action="view.php" method="post" role="form">                    
+                        <form name="manage" action="<?php echo current_page_Url(); ?>" method="post" role="form">                    
                             
                             <div class="col-xs-4">
                             	First Name:<br />
-                            	<input name="NAME_FIRST" type="text" class="form-control" value="<?php echo $_SESSION['NAME_FIRST']; ?>" />
+                            	<input name="USER_NAME_FIRST" type="text" class="form-control" value="<?php echo $_SESSION['USER_NAME_FIRST']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
                             	Last Name:<br />
-                            	<input name="NAME_LAST" type="text" class="form-control" value="<?php echo $_SESSION['NAME_LAST']; ?>" />
+                            	<input name="USER_NAME_LAST" type="text" class="form-control" value="<?php echo $_SESSION['USER_NAME_LAST']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">
@@ -48,12 +48,12 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             	Email:<br />
-                            	<input name="EMAIL" type="email" class="form-control" value="<?php echo $_SESSION['EMAIL']; ?>" />
+                            	<input name="USER_EMAIL" type="email" class="form-control" value="<?php echo $_SESSION['USER_EMAIL']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
                             	Password:<br />
-                            	<input name="PASSWORD" type="password" class="form-control" value="<?php echo $_SESSION['PASSSWORD']; ?>" />
+                            	<input name="USER_PASSWORD" type="password" class="form-control" value="<?php echo $_SESSION['USER_PASSSWORD']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">

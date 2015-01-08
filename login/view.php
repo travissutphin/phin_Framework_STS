@@ -38,10 +38,10 @@ include('controller.php');
                         <form name="login" action="view.php" method="post" role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Email" name="EMAIL" type="email" autofocus>
+                                    <input class="form-control" placeholder="Email" name="USER_EMAIL" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="PASSWORD" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="USER_PASSWORD" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
