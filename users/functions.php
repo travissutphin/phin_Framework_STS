@@ -96,7 +96,7 @@
 	function read_Users($id=FALSE,$email=FALSE)
 	{
 	  $sql = ' SELECT '.COLUMNS_SYSTEM_TBL_USERS.', '.COLUMNS_SYSTEM_TBL_ROLES.' FROM system_tbl_users users ';
-	  $sql.= ' JOIN system_tbl_roles roles ON users.ROLE_ID = roles.ROLE_ID ';	
+	  $sql.= ' JOIN system_tbl_roles roles ON users.USER_ROLE_ID = roles.ROLE_ID ';	
 
 	  // id
 	  if($id !== FALSE)

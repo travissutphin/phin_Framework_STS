@@ -143,8 +143,8 @@
 				 PRIORITY VARCHAR(50) NULL ,
 				 OPERATING_SYSTEM VARCHAR(100) NULL ,
 				 BROWSER VARCHAR(100) NULL ,
-				 SOLUTION TEXT NULL
-				 PRIMARY KEY (BUG_ID)
+				 SOLUTION TEXT NULL ,
+				 PRIMARY KEY (CASE_ID)
 				)ENGINE=InnoDB";
 		if(!mysql_query($sql,$conn))
 		{
@@ -153,7 +153,7 @@
 		}
 				
 		//--- insert users ---//
-		$sql = mysql_query("INSERT INTO ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_users (USER_NAME_FIRST, USER_NAME_LAST, USER_EMAIL, USER_ROLE_ID, USER_PASSWORD) VALUES ('default', 'user', 'email', 1, 'password')");
+		$sql = mysql_query("INSERT INTO ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_users (USER_NAME_FIRST, USER_NAME_LAST, USER_EMAIL, USER_ROLE_ID, USER_PASSWORD) VALUES ('default', 'user', 'email@email.com', 1, 'password')");
 		
 		//--- insert roles ---//
 		$sql = mysql_query("INSERT INTO ".$_SESSION['database'].".".$_SESSION['prefix']."system_tbl_roles (ROLE_NAME) VALUES ('Admin')");				
