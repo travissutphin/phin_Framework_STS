@@ -29,28 +29,23 @@ _system/config.php file based on the _system/config_builder.php file.
 
 File Structure
 ==============
-The file structure is based on the tables in your database. Therefore, if you have a table named "users", you will also have a folder names "users".
+phin_Frameworks file structure is based on the tables in your database. Therefore, if you have a table named "users", you will also have a folder named "users".
 Within that folder, "users" will be at the very least, a file called functions.php.  All functions pertaining to the table "users" go into this functions.php.
 Also, within "users" folder will contain controller.php, index.php, view.php, crud_create.php and crud_update.php
 - controller.php: this should be at the top of all files with the "users" folder.  It will run first and decide what info to display and or where to redirect.  All function calls should also go into the controller.php file.
-- index.php: redirects to the view.php file
-- view.php: the main view of the records in the "users" table (contains the controller.php at the top of this file)
-- crud_create.php: create a new "users" record (contains the controller.php at the top of this file)
-- crud_update: update a "users" records (contains the controller.php at the top of this file)
+* index.php: redirects to the view.php file
+* view.php: the main view of the records in the "users" table (contains the controller.php at the top of this file)
+* crud_create.php: create a new "users" record (contains the controller.php at the top of this file)
+* crud_update: update a "users" records (contains the controller.php at the top of this file)
 
 
-Methodology
+Naming Methodology
 ===========
-phin_Framework is based on the strucure of the database you are using.  Each database table has a corresponding
-folder on the root of the app.  Everything pertaining to that database table goes into this folder.
-  
-Each folder will contain at minimum, 
-* controller.php - runs with every request and decides how the request should be handled
-* crud_create.php - create form for new record
-* crud_update.php - update form to update existing record
-* functions.php - all of the functions pertaining to this database table
-* index.php - always redirects to the view.php
-* view.php - main page
+Database table names drive the organization and self documentation of phin_Framework.  Here are examples of how you should name your database tables and function names so they are self documenting and easy to find in the file structure.
+
+* Database names:  should be as descriptive as possible.  If you need a table for events, then the table name should be "events" (plural because there will be more than one event)
+* Functions: If we create functions for our "events" table, the function name should contain that name.  For example, read_Events(), update_Events(), join_venues_to_Events(). Now no matter where in the code you see this function, you know it belongs to the "events" table which also means it is in the "events" folder.
+
 
 Working with Queries
 ====================
