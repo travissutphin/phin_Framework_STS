@@ -29,7 +29,15 @@ _system/config.php file based on the _system/config_builder.php file.
 
 File Structure
 ==============
-coming soon
+The file structure is based on the tables in your database. Therefore, if you have a table named "users", you will also have a folder names "users".
+Within that folder, "users" will be at the very least, a file called functions.php.  All functions pertaining to the table "users" go into this functions.php.
+Also, within "users" folder will contain controller.php, index.php, view.php, crud_create.php and crud_update.php
+- controller.php: this should be at the top of all files with the "users" folder.  It will run first and decide what info to display and or where to redirect.  All function calls should also go into the controller.php file.
+- index.php: redirects to the view.php file
+- view.php: the main view of the records in the "users" table (contains the controller.php at the top of this file)
+- crud_create.php: create a new "users" record (contains the controller.php at the top of this file)
+- crud_update: update a "users" records (contains the controller.php at the top of this file)
+
 
 Methodology
 ===========
