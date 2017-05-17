@@ -25,7 +25,7 @@
 		$data_columns = rtrim($data_columns, ','); // remove comma from end of string
 		$data_values = rtrim($data_values, ','); // remove comma from end of string
 		
-		$sql = "INSERT INTO your_table_name_goes_here
+		$sql = "INSERT INTO case_manager
 			  ($data_columns) 
 			  VALUES ($data_values) " ;
 		
@@ -48,7 +48,7 @@
 */
 	function read_($id=FALSE)
 	{
-		$sql = ' SELECT '.COLUMNS_your_table_name_goes_here.' FROM your_table_name_goes_here WHERE 0=0 ';	
+		$sql = ' SELECT '.COLUMNS_CASE_MANAGER.' FROM case_manager WHERE 0=0 ';	
 		
 		if($id !== FALSE)
 		{ $sql.= " AND id = '$id' "; }  
@@ -75,7 +75,7 @@
 */
 	function read_values_($id=FALSE)
 	{
-		$sql = ' SELECT '.COLUMNS_your_table_name_goes_here.' FROM your_table_name_goes_here  WHERE 0=0 ';	
+		$sql = ' SELECT '.COLUMNS_CASE_MANAGER.' FROM case_manager  WHERE 0=0 ';	
 		if($id !== FALSE)
 		{ $sql.= " AND ID = '$id' "; }  
 		
@@ -141,7 +141,7 @@
 	{
 		if($id !== FALSE)
 		{
-			$sql = "DELETE FROM your_table_name_goes_here
+			$sql = "DELETE FROM case_manager
 					WHERE id = '$id' ";
 						  
 			$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
@@ -160,7 +160,7 @@
 */
 	function html_list_($id=FALSE,$values=FALSE)
 	{
-	  $sql = ' SELECT '.COLUMNS_your_table_name_goes_here.' FROM your_table_name_goes_here ';	
+	  $sql = ' SELECT '.COLUMNS_CASE_MANAGER.' FROM case_manager ';	
 	  $sql.= ' ORDER BY column';
 	  
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
