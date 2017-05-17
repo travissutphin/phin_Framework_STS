@@ -4,6 +4,7 @@
 
 /**
   * @desc	create database connection for MySQL or MSSQL (MSSQL needs to be completed through entire site)
+  * MySQL code is complete
   * @param	
   * @return $_SESSION['connection']
 */
