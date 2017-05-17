@@ -3,7 +3,7 @@
 /*****************************************************************/
 
 /**
-  * @desc	create database connection for MySQL or MSSQL
+  * @desc	create database connection for MySQL or MSSQL (MSSQL needs to be completed through entire site)
   * @param	
   * @return $_SESSION['connection']
 */
