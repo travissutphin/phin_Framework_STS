@@ -7,10 +7,21 @@
   * @param	$result
   * @return $return
 */
+
+// *** SECTIONS *** //
+// VARIABLES //
+// EMAILS //
+// REGISTRATION, PASSWORD, LOGIN //
+// PAGE MANAGEMENT //
+// GENERAL //
+
 	function messages($result)
 	{
 	  switch($result)
 	  {
+		
+// VARIABLES //
+			  
 		case("vars_saved"):
 		$return = '<div class="alert alert-success fade in">
 					<button type="button" class="close" data-dismiss="alert">×</button>
@@ -24,7 +35,9 @@
 					<strong>All data in this form has been cleared</strong>
 				   </div>';
 		break;
-		
+
+// EMAILS //
+			  
 		case("email_duplicate"):
 		$return = '<div class="alert alert-danger fade in">
 					<button type="button" class="close" data-dismiss="alert">×</button>
@@ -61,7 +74,9 @@
 					<strong>Email has NOT been sent due to an error.</strong>
 				   </div>';
 		break;
-		
+
+// REGISTRATION, PASSWORD, LOGIN //
+			  
 		case("change_password"):
 		$return = '<div class="alert alert-danger fade in">
 					<strong>Please change your password and email address</strong>
@@ -72,12 +87,6 @@
 					You will also receive an email to the email address you type below.<br />
 				   </div>
 				  ';
-		break;
-		
-		case("category_duplicate"):
-		$return = '<div class="alert alert-danger fade in">
-					<strong>A Category with that name has already been created<br /><br /></strong>
-				   </div>';
 		break;
 		
 		case("login"):
@@ -107,7 +116,9 @@
 					<strong>Invalid login credentials</strong> 
 				   </div>';	
 		break;
-		
+
+// PAGE MANAGEMENT //
+			  
 		case("created"):
 		$return = '<div class="alert alert-success fade in">
 					<button type="button" class="close" data-dismiss="alert">×</button>
@@ -135,14 +146,22 @@
 					<strong>Not able to delete</strong> 
 				   </div>';			
 		break;
-				
+
+		case("category_duplicate"):
+		$return = '<div class="alert alert-danger fade in">
+					<strong>A Category with that name has already been created<br /><br /></strong>
+				   </div>';
+		break;
+
+// GENERAL //
+			  
 		case("error"):		
 		$return = '<div class="alert alert-danger fade in">
 					<button type="button" class="close" data-dismiss="alert">×</button>
 					<strong>An error has occured.</strong> 
 				   </div>';
 		break;
-
+			  
 		default:
 		$return = '';
 		
