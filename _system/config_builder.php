@@ -15,7 +15,8 @@
 	define("DB_DATABASE","DB_DATABASE_VALUE");
 	define("DB_USER","DB_USER_VALUE");
 	define("DB_PASSWORD", "DB_PASSWORD_VALUE");
-	define("APP_DIRECTORY", "APP_DIRECTORY_VALUE"); // should be "/" if app is on the root	
+	define("APP_DIRECTORY", "APP_DIRECTORY_VALUE"); // should be "/" if app is on the root
+	define("LOGIN_TIMEOUT", "360");
 /*****************************************************************/	
 
 

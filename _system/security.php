@@ -37,7 +37,7 @@
 */
 	function is_logged_in_Security() 
 	{		
-		$inactive = 360; // set timeout period in seconds
+		$inactive = LOGIN_TIMEOUT; // set timeout period in seconds (located in /_system/config.php)
 		
 		if(!isset($_SESSION['users.is_logged_in']))
 		{
