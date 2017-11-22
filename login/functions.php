@@ -9,12 +9,12 @@
 */
 	function validate_Login()
 	{			  
-		$email = cleanInput_Security($_POST['USERS_EMAIL']);
-		$password = cleanInput_Security($_POST['USERS_PASSWORD']);
+		$email = cleanInput_Security($_POST['USER_EMAIL']);
+		$password = cleanInput_Security($_POST['USER_PASSWORD']);
 		
 		$sql = 'SELECT '.COLUMNS_SYSTEM_TBL_USERS.' FROM system_tbl_users users ';	
-	  	$sql.= " WHERE users.USERS_EMAIL = '".$email."' ";	
-	  	$sql.= "   AND users.USERS_PASSWORD = '".$password."' ";  
+	  	$sql.= " WHERE users.USER_EMAIL = '".$email."' ";	
+	  	$sql.= "   AND users.USER_PASSWORD = '".$password."' ";  
 
 echo $sql;
 
@@ -62,9 +62,9 @@ echo $sql;
 	  	{	
 			$_SESSION['users.is_logged_in'] = TRUE ;
 		 	$_SESSION['users.id'] = $row['USER_ID'] ;
-		 	$_SESSION['users.email'] = $row['USERS_EMAIL'] ;
-		 	$_SESSION['users.name_first'] = $row['USERS_NAME_FIRST'] ;
-		 	$_SESSION['users.name_last'] = $row['USERS_NAME_LAST'] ;
+		 	$_SESSION['users.email'] = $row['USER_EMAIL'] ;
+		 	$_SESSION['users.name_first'] = $row['USER_NAME_FIRST'] ;
+		 	$_SESSION['users.name_last'] = $row['USER_NAME_LAST'] ;
 		 	$_SESSION['users.role_id'] = $row['ROLE_ID'] ;
  		 	$value_roles = read_values_Roles($row['ROLE_ID']);
 			$_SESSION['users.role'] = $value_roles['name'];
