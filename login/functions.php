@@ -16,8 +16,6 @@
 	  	$sql.= " WHERE users.USER_EMAIL = '".$email."' ";	
 	  	$sql.= "   AND users.USER_PASSWORD = '".$password."' ";  
 
-echo $sql;
-
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 		
 		// error reporting 
