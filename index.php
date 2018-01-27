@@ -24,5 +24,3 @@
   
   // send user to the login page
   header( 'Location: login/' ) ;
-  
-  testing
