@@ -244,6 +244,7 @@
 				(MODEL_ID INT NOT NULL AUTO_INCREMENT ,
 				 SITE_FK INT(11) NOT NULL ,
 				 MODEL VARCHAR(50) NULL ,
+				 ORDER INT(11) NULL , 
 				 PRIMARY KEY (MODEL_ID)
 				)ENGINE=InnoDB";
 		if(!mysql_query($sql,$conn))
@@ -282,15 +283,15 @@
 		}		
 
 		//--- IP TRACKING ---//
-		$sql = "CREATE TABLE ".$_SESSION['database'].".".$_SESSION['prefix']."IP_TRACKING
-				(IP_TRACKING_ID INT NOT NULL AUTO_INCREMENT ,
+		$sql = "CREATE TABLE ".$_SESSION['database'].".".$_SESSION['prefix']."IP_LOG
+				(IP_LOG_ID INT NOT NULL AUTO_INCREMENT ,
 				 SITE_FK INT(11) NOT NULL ,
 				 IP_ADDRESS VARCHAR(25) NULL ,
 				 ATTEMPTED_ACCESS_TO VARCHAR(25) NULL , 
 				 CREATED_AT DATETIME NOT NULL ,
 				 UPDATED_AT DATETIME NULL ,
 				 DELETED_AT DATETIME NULL ,
-				 PRIMARY KEY (IP_TRACKING_ID)
+				 PRIMARY KEY (IP_LOG_ID)
 				)ENGINE=InnoDB";
 		if(!mysql_query($sql,$conn))
 		{

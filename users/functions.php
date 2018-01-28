@@ -232,20 +232,9 @@
   * @param	$id(selected record) - $value(class, id, etc)
   * @return none - echo out list
 */
-	function html_list_Users($id=FALSE,$values=FALSE,$role_id=FALSE)
+	function html_list_Users($id=FALSE,$email=FALSE,$values=FALSE)
 	{
-	  $sql = ' SELECT '.COLUMNS_USERS.' FROM USERS users ';	
-	  
-	  if($role_id != FALSE)
-	  { $sql.= " WHERE users.ROLE_FK = '$role_id' "; }
-	  
-	  $sql.= ' ORDER BY users.NAME_LAST, users.NAME_FIRST ';
-	  
-	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
-
-	  // error reporting 
-	  if($result === false) 
-	  { error_report_Helpers('Error Generating User HTML List - (html_list_Users)',$sql); }
+	  $result = read_Users($id=FALSE,$email=FALSE)
 	  
 	  echo '<select name="user_id" "'.$values.'">';
 	  while($data = $_SESSION['FETCH_ARRAY']($result))
