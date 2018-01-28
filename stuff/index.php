@@ -1,11 +1,5 @@
 <?php
-/* .INDEX */
-
-/**
-  * @desc	redirect to view pages
-  * @param	
-  * @return none
-*/
+/* USERS.INDEX */
 /*****************************************************************/
 	
   header( 'Location: view.php' ) ;
