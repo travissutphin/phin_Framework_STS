@@ -34,12 +34,12 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             	First Name:<br />
-                            	<input name="USER_NAME_FIRST" type="text" class="form-control" value="<?php echo $_SESSION['USER_NAME_FIRST']; ?>" />
+                            	<input name="NAME_FIRST" type="text" class="form-control" value="" />
                             </div>
                             
                             <div class="col-xs-4">
                             	Last Name:<br />
-                            	<input name="USER_NAME_LAST" type="text" class="form-control" value="<?php echo $_SESSION['USER_NAME_LAST']; ?>" />
+                            	<input name="NAME_LAST" type="text" class="form-control" value="<?php echo $_SESSION['NAME_LAST']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">
@@ -48,12 +48,12 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             	Email:<br />
-                            	<input name="USER_EMAIL" type="email" class="form-control" value="<?php echo $_SESSION['USER_EMAIL']; ?>" />
+                            	<input name="EMAIL" type="email" class="form-control" value="<?php echo $_SESSION['EMAIL']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
                             	Password:<br />
-                            	<input name="USER_PASSWORD" type="password" class="form-control" value="<?php echo $_SESSION['USER_PASSSWORD']; ?>" />
+                            	<input name="PASSWORD" type="password" class="form-control" value="<?php echo $_SESSION['PASSSWORD']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">
@@ -62,7 +62,7 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             	Role:<br />
-                            	<?php html_list_Roles($_SESSION['ROLE_ID'],'class="form-control"'); ?>
+                            	<?php html_list_Roles($_SESSION['ROLE_FK'],'class="form-control"'); ?>
                           	</div>
                             
                           	<div class="col-xs-8">
@@ -70,8 +70,7 @@ include('controller.php');
                           	</div>
 
                           	<div class="col-xs-4">
-								<input name="create" class="btn btn-success btn-outline" type="submit" value="create"> 
-                          		<input name="cancel" class="btn btn-danger btn-outline" type="submit" value="cancel">              
+								<input name="create" type="submit" class="btn btn-success btn-outline" value="Create" />      
                           	</div>
                         </form>
 

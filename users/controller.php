@@ -44,7 +44,6 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
   * @return 
 */
 
-	
 	if(isset($_REQUEST['USER_ID']))
 	{
 		$record_by_id= read_Users($_REQUEST['USER_ID']);

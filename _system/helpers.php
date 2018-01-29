@@ -85,9 +85,11 @@
 	{
 		foreach ($_POST as $key => $value) 
 		{
-	  		$_SESSION[$key] = '';		    
+			if(isset($_SESSION[$key])){
+				$_SESSION[$key] = NULL ;
+			}
 		}
-		
+
 		$message = 'vars_cleared';
 		return $message;
 	}

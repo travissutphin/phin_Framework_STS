@@ -40,14 +40,14 @@ include('controller.php');
                             <tbody>
                             <?php while ($row = $_SESSION['FETCH_ARRAY']($records_all)){ ?>                      
                               <tr>
-                                <td><?php echo $row['USER_NAME_FIRST']; ?></td>
-                                <td><?php echo $row['USER_NAME_LAST']; ?></td>
-                                <td><?php echo $row['USER_EMAIL']; ?></td>                                           
+                                <td><?php echo $row['NAME_FIRST']; ?></td>
+                                <td><?php echo $row['NAME_LAST']; ?></td>
+                                <td><?php echo $row['EMAIL']; ?></td>                                           
                                 <td><?php echo $row['ROLE_NAME']; ?></td>
                                 <td>
                                 <form name="manage" action="crud_update.php" method="post">
                                     <input name="crud_update" type="submit" class="btn btn-info btn-xs btn-outline" value="Update">
-                                    <?php if($records_all_num_rows != 1 and $row['USERS_ID'] != 1) { ?>
+                                    <?php if($records_all_num_rows != 1 and $row['USER_ID'] != 1) { ?>
                                     <button name="delete" class="btn btn-danger btn-xs btn-outline" onClick="return confirm('Are you sure you want to delete')">Delete</button>
                                     <?php } ?>
                                     <input name="USER_ID" type="hidden" value="<?php echo $row['USER_ID']; ?>" />

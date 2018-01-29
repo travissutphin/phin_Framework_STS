@@ -27,7 +27,7 @@
 		$data_columns = rtrim($data_columns, ','); // remove comma from end of string
 		$data_values = rtrim($data_values, ','); // remove comma from end of string
 		
-		$sql = "INSERT INTO system_tbl_roles
+		$sql = "INSERT INTO ROLES
 				($data_columns) 
 				VALUES ($data_values) 
 			   ";
@@ -52,7 +52,7 @@
 */
 	function read_Roles($id=FALSE)
 	{
-		$sql = 'SELECT '.COLUMNS_SYSTEM_TBL_ROLES.' FROM system_tbl_roles roles ';	
+		$sql = 'SELECT '.COLUMNS_ROLES.' FROM ROLES roles ';	
 		
 		// by id
 		if($id !== FALSE)
@@ -80,7 +80,7 @@
 */
 	function read_values_Roles($id=FALSE)
 	{
-		$sql = 'SELECT '.COLUMNS_SYSTEM_TBL_ROLES.' FROM system_tbl_roles roles ';	
+		$sql = 'SELECT '.COLUMNS_ROLES.' FROM ROLES roles ';	
 		
 		// by id
 		if($id !== FALSE)
@@ -129,7 +129,7 @@
 		
 		$data_update = rtrim($data_update, ','); // remove comma from end of string
 			  
-		$sql = "UPDATE system_tbl_roles
+		$sql = "UPDATE ROLES
 				SET ".$data_update."
 				WHERE ROLE_ID = '$_POST[ROLE_ID]'
 			   ";
@@ -158,8 +158,8 @@
 	  $message = 'not_able_to_deleted';
 	  if($id !== FALSE)
 	  {
-		$sql = "DELETE FROM system_tbl_roles
-				WHERE ROLE_ID = '$id' ";
+		$sql = "DELETE FROM ROLES
+					WHERE ROLE_ID = '$id' ";
 					  
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 	
@@ -182,7 +182,7 @@
 */
 	function html_list_Roles($id=FALSE,$values=FALSE)
 	{
-	  $sql = ' SELECT '.COLUMNS_SYSTEM_TBL_ROLES.' FROM system_tbl_roles roles ';	
+	  $sql = ' SELECT '.COLUMNS_ROLES.' FROM ROLES roles ';	
 	  $sql.= ' ORDER BY roles.ROLE_NAME';
 	  
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);

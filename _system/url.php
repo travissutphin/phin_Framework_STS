@@ -37,7 +37,7 @@
 	function current_page_Url()
 	{
 		$pageURL = 'http';
-		if ($_SERVER["HTTPS"] == "on") 
+		if (isset($_SERVER["HTTPS"]) and $_SERVER["HTTPS"] == "on") 
 		{	
 			$pageURL .= "s";
 		}

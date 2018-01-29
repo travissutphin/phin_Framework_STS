@@ -10,7 +10,7 @@
 	function create_Users()
 	{	  		
 		// set needed variables
-		$createdAt = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
+		$_POST['CREATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
 		
 		if(!isset($_POST['PASSWORD']) or $_POST['PASSWORD'] == "")
 		{ $_POST['PASSWORD'] = random_string_Helpers();	} // create random password
@@ -23,10 +23,6 @@
 			
 			// save values as session vars
 			set_postVars_to_sessionVars_Helpers();
-			//foreach ($_POST as $key => $value) 
-			//{
-			 // $_SESSION[$key] = $value;		  
-			//}
 		}
 		else
 		{
@@ -67,20 +63,14 @@
 			  // error reporting 
 			  if($result === false) 
 			  { error_report_Helpers('Error Creating User - (create_Users)',$sql); }
-			
-			  $id = last_inserted_id_Helpers($result); // id of the last inserted record
 
+			  // clear values as session vars
+			  clear_postVars_to_sessionVars_Helpers();
+			  
 			  $message = 'created';
 			 
 			  //registration_info_Email($id); // email new user login details
-			  
-			  // clear values as session vars
-			  clear_postVars_to_sessionVars_Helpers();
-			  //foreach ($_POST as $key => $value) 
-			  //{
-			//	$_SESSION[$key] = '';		  
-			  //}
-				
+			  			
 			}
 		}
 		
@@ -106,8 +96,9 @@
 	  if($email !== FALSE)
 	  {	$sql.= " AND users.EMAIL = '$email' "; }
 	  
+	  $sql.= " AND DELETED_AT IS NULL ";
 	  $sql.= ' ORDER BY users.NAME_LAST, users.NAME_FIRST ';
-	  
+
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
 	  if($result === false) 
@@ -159,6 +150,9 @@
 */
 	function update_Users()
 	{	  	
+		
+		$_POST['ROLE_FK'] = $_POST['ROLE_ID'];
+		
 		if(!validate_Email($_POST['EMAIL'])) // check for valid email
 		{ $message = 'email_invalid'; }
 		else // update
@@ -179,7 +173,7 @@
 					SET ".$data_update."
 					WHERE USER_ID = '$_POST[USER_ID]'
 				   ";
-		
+
 			$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 			
 			// error reporting 
@@ -194,6 +188,9 @@
 			}
 		}
 		
+		// clear values as session vars
+		clear_postVars_to_sessionVars_Helpers();
+			  
 		return $message;
 	}
 /*****************************************************************/
@@ -234,9 +231,9 @@
 */
 	function html_list_Users($id=FALSE,$email=FALSE,$values=FALSE)
 	{
-	  $result = read_Users($id=FALSE,$email=FALSE)
+	  $result = read_Users($id=FALSE,$email=FALSE);
 	  
-	  echo '<select name="user_id" "'.$values.'">';
+	  echo '<select name="user_id" " '.$values.' ">';
 	  while($data = $_SESSION['FETCH_ARRAY']($result))
 	  {
 		if($data['USER_ID'] == $id){ $selected="selected"; }else{ $selected=""; }

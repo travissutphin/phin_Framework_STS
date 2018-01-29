@@ -54,7 +54,7 @@
 	
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."login\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."users\\functions.php");
-	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."roles\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_roles\\functions.php");
 
 /*****************************************************************/
   
@@ -114,7 +114,7 @@
 
 /**
   * @desc	this should only be changed following installation.
-  * 		modifying this in ayway once data has been added will 
+  * 		modifying this in anyway once data has been added will 
   *			render all encrypted values unreadable
   * @param	
   * @return 

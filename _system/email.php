@@ -125,14 +125,14 @@
 */	
 	function validate_Email($email)
 	{
-	   $isValid = true;
-	   $atIndex = strrpos($email, "@");
-	   if (is_bool($atIndex) && !$atIndex)
-	   {
+		$isValid = true;
+		$atIndex = strrpos($email, "@");
+		if (is_bool($atIndex) && !$atIndex)
+		{
 		  $isValid = false;
-	   }
-	   else
-	   {
+		}
+		else
+		{
 		  $domain = substr($email, $atIndex+1);
 		  $local = substr($email, 0, $atIndex);
 		  $localLen = strlen($local);
@@ -177,14 +177,12 @@
 				$isValid = false;
 			 }
 		  }
-		  if(function_exists(checkdnsrr))
-		  {
-			if ($isValid && !(checkdnsrr($domain,"MX") || checkdnsrr($domain,"A")))
-		  	{
-				// domain not found in DNS
-			 	$isValid = false;
-		  	}
-		  }
+		  
+		if ($isValid && !(dns_check_record($domain,"MX") || dns_check_record($domain,"A")))
+		{
+			// domain not found in DNS
+			$isValid = false;
+		}
 		  
 	   }
 	   return $isValid;

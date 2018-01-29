@@ -27,7 +27,7 @@ include('controller.php');
                     <div class="table-responsive">
    
                 <fieldset>  
-        
+
 					<legend></legend>
                     <?php while ($row = $_SESSION['FETCH_ARRAY']($record_by_id)){ ?>
                         
@@ -35,12 +35,12 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             First Name:<br />
-                            <input name="USER_NAME_FIRST" type="text" class="form-control" value="<?php echo $row['USER_NAME_FIRST']; ?>" />
+                            <input name="NAME_FIRST" type="text" class="form-control" value="<?php echo $row['NAME_FIRST']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
                             Last Name:<br />
-                            <input name="USER_NAME_LAST" type="text" class="form-control" value="<?php echo $row['USER_NAME_LAST']; ?>" />
+                            <input name="NAME_LAST" type="text" class="form-control" value="<?php echo $row['NAME_LAST']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">
@@ -49,12 +49,12 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             Email:<br />
-                            <input name="USER_EMAIL" type="email" class="form-control" value="<?php echo $row['USER_EMAIL']; ?>" />
+                            <input name="EMAIL" type="email" class="form-control" value="<?php echo $row['EMAIL']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
                             	Password:<br />
-                            	<input name="USER_PASSWORD" type="password" class="form-control" value="<?php echo $row['USER_PASSWORD']; ?>" />
+                            	<input name="PASSWORD" type="password" class="form-control" value="<?php echo $row['PASSWORD']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">
@@ -63,7 +63,7 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             Role:<br />
-                            <?php html_list_Roles($row['ROLE_ID'],'class="form-control"'); ?>
+                            <?php html_list_Roles($row['ROLE_FK'],'class="form-control"'); ?>
                           	</div>
                             
                           	<div class="col-xs-8">
@@ -71,8 +71,7 @@ include('controller.php');
                           	</div>
 
                           	<div class="col-xs-4">
-                          		<button name="cancel" class="btn btn-danger btn-outline"> Cancel </button>
-                          		<button name="update" class="btn btn-success btn-outline"> Save </button>
+                          		<input name="update" type="submit" class="btn btn-success btn-outline" value="Update" />
                           		<input name="USER_ID" type="hidden" value="<?php echo $row['USER_ID']; ?>" />               
                           	</div>
                         </form>
