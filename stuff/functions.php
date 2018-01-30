@@ -11,35 +11,35 @@
 	{	  		
 		// set needed variables
 		$createdAt = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
-				  
+								
 				$data_columns = "";
 				$data_values = "";
-		
+
 				foreach ($_POST as $key => $value) 
-				{
+				{				
 					// x_ = add to posted vars you don't want included here that are not listed in $_SESSION['ignore']
 					if(!in_array($key,$_SESSION['ignore']) and strpos($key, 'x_') === FALSE) // $_SESSION['ignore'] = _system/config.php
 					{
 						$value = cleanInput_Security($value);
 						$data_columns.= $key.",";
-						$data_values.= "'$value',";
+						$data_values.= " '$value',";
 					}
-		
+				}
 					$data_columns = rtrim($data_columns, ','); // remove comma from end of string
 					$data_values = rtrim($data_values, ','); // remove comma from end of string
-					
+
 					$sql = "INSERT INTO STUFF
 							($data_columns) 
 							VALUES ($data_values) 
 						   ";
-		  
-				  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+
+				 $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 				  
-				  // error reporting 
-				  if($result === false) 
-				  { error_report_Helpers('Error Creating User - (create_Stuff)',$sql); }
+				 // error reporting 
+				 if($result === false) 
+				 { error_report_Helpers('Error Creating Stuff - (create_Stuff)',$sql); }
 				
-				  $id = last_inserted_id_Helpers($result); // id of the last inserted record
+				  //$id = last_inserted_id_Helpers($result); // id of the last inserted record
 
 				  $message = 'created';
 				 
@@ -47,13 +47,7 @@
 				  
 				  // clear values as session vars
 				  clear_postVars_to_sessionVars_Helpers();
-				  //foreach ($_POST as $key => $value) 
-				  //{
-				//	$_SESSION[$key] = '';		  
-				  //}
-				
-				}
-			
+
 		return $message;
 	}
 /*****************************************************************/
@@ -66,6 +60,7 @@
 	function read_Stuff($id=FALSE,$site_fk=FALSE,$user_fk=FALSE,$category_fk=FALSE,$year_start_dk=FALSE,$year_end_dk=FALSE,$status_dk=FALSE)
 	{
 	  $sql = ' SELECT '.COLUMNS_STUFF.' FROM STUFF stuff ';
+	  $sql.= ' WHERE 0=0 ';
 
 	  // by id
 	  if($id !== FALSE)
@@ -76,7 +71,7 @@
 	  {	$sql.= " AND stuff.SITE_FK = '$site_fk' "; }
 	  
 	  // by user_fk
-	  if($stuff_fk !== FALSE)
+	  if($user_fk !== FALSE)
 	  {	$sql.= " AND stuff.USER_FK = '$user_fk' "; }
 
 	  // by category_fk

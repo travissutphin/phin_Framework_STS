@@ -46,7 +46,7 @@
 					{
 						$value = cleanInput_Security($value);
 						$data_columns.= $key.",";
-						$data_values.= "'$value',";
+						$data_values.= " '$value',";
 					}
 				}
 		

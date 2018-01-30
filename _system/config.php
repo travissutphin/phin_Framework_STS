@@ -16,7 +16,7 @@
 	define("DB_USER","root");
 	define("DB_PASSWORD", "");
 	define("APP_DIRECTORY", "/phin_Framework_STS/"); // should be "/" if app is on the root
-	define("LOGIN_TIMEOUT", "360");
+	define("LOGIN_TIMEOUT", "360");	
 /*****************************************************************/	
 
 
@@ -45,30 +45,29 @@
   * @param	
   * @return 
 */
+	// system functions
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_system\\security.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_system\\database.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_system\\dates_times.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_system\\email.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_system\\message_center.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_system\\helpers.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_system\\html_select_lists.php");
 	
-	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."login\\functions.php");
-	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."users\\functions.php");
+	// not managed in admin pages ( no crud in admin )
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_categories\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_models\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_roles\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."_sites\\functions.php");
 
+	// manage in admin pages ( has crud in admin)
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."login\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."stuff\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."users\\functions.php");
+	
 /*****************************************************************/
   
-
   
-/**
-  * @desc	addon modules for updates to the app
-  * @param	
-  * @return 
-*/
-
-/*****************************************************************/
-
-
 /**
   * @desc	set db specific function names based on database type
   * @param	DB_TYPE
@@ -103,12 +102,27 @@
   *			within the tbl_users table
   * @creats	define("COLUMNS_system_tbl_roles" ,"roles.ID, roles.NAME, roles.CREATED_AT, roles.UPDATED_AT, roles.DELETED_AT") 
 */ 
-	$table_x_alias = array("USERS"=>"users", "ROLES"=>"roles");	
+	$table_x_alias = array("CATEGORIES"=>"cat","MODELS"=>"model", "ROLES"=>"roles", "SITES"=>"sites", "STUFF"=>"stuff", "USERS"=>"users");	
 							
 	foreach($table_x_alias as $table => $alias)
 	{	
 		table_fields_Database($table,$alias);
 	}
+/*****************************************************************/
+
+
+/**
+  * @desc
+  * @param	
+  * @return 
+*/
+	$this_url = $_SERVER['HTTP_HOST'];
+	$read_values_Sites = read_values_Sites(FALSE, $this_url);
+	// we can use the following to get site details
+	define("SITE_ID", $read_values_Sites['site_id']);
+	define("SITE", $read_values_Sites['year_start']);
+	define("SITE_YEAR_START", $read_values_Sites['year_start']);
+	define("SITE_DISPLAY_NAME", $read_values_Sites['display_name']);
 /*****************************************************************/
 
 

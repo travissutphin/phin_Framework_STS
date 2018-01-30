@@ -1,5 +1,5 @@
 <?php
-/* USERS.VIEW */
+/* STUFF.VIEW */
 /*****************************************************************/
 include('../templates/admin_header.php');
 include('controller.php');
@@ -10,7 +10,7 @@ include('controller.php');
       
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Users</h1>
+            <h1 class="page-header"><?php echo SITE_DISPLAY_NAME; ?> Stuff</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -29,10 +29,11 @@ include('controller.php');
                             <form name="manager" action="crud_create.php" method="post">
                             <thead>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
+                                    <th>Title</th>
+                                    <th>Year</th>
+                                    <th>Model</th>
+                                    <th>Category</th>
+									<th>Status</th>
                                     <th><input name="crud_create" type="submit" class="btn btn-success btn-xs btn-outline" value="Add"></th>
                                 </tr>
                             </thead>
@@ -40,21 +41,22 @@ include('controller.php');
                             <tbody>
                             <?php while ($row = $_SESSION['FETCH_ARRAY']($records_all)){ ?>                      
                               <tr>
-                                <td><?php echo $row['USER_NAME_FIRST']; ?></td>
-                                <td><?php echo $row['USER_NAME_LAST']; ?></td>
-                                <td><?php echo $row['USER_EMAIL']; ?></td>                                           
-                                <td><?php echo $row['ROLE_NAME']; ?></td>
+                                <td><?php echo $row['TITLE']; ?></td>
+                                <td><?php echo $row['YEAR_START_DK'].' '.$row['YEAR_END_DK']; ?></td>
+                                <td><?php echo $row['MODEL_FK']; ?></td>                                           
+                                <td><?php echo $row['CATEGORY_FK']; ?></td>
+								<td><?php echo $row['STATUS']; ?></td>
                                 <td>
                                 <form name="manage" action="crud_update.php" method="post">
                                     <input name="crud_update" type="submit" class="btn btn-info btn-xs btn-outline" value="Update">
-                                    <?php if($records_all_num_rows != 1 and $row['USERS_ID'] != 1) { ?>
+                                    <?php if($records_all_num_rows != 1 and $row['STUFF_ID'] != 1) { ?>
                                     <button name="delete" class="btn btn-danger btn-xs btn-outline" onClick="return confirm('Are you sure you want to delete')">Delete</button>
                                     <?php } ?>
-                                    <input name="USER_ID" type="hidden" value="<?php echo $row['USER_ID']; ?>" />
+                                    <input name="STUFF_ID" type="hidden" value="<?php echo $row['STUFF_ID']; ?>" />
                                 </form>
                                 </td>
                               </tr>
-                              <?php } ?>
+                            <?php } ?>
                             </tbody>
                         </table>
                     </div>

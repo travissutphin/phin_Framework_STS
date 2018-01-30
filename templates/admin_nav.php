@@ -23,6 +23,9 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Admin Tools<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
+                                    <a href="<?php echo site_Url(); ?>stuff/"> Stuff</a>
+                                </li>
+								<li>
                                     <a href="<?php echo site_Url(); ?>users/"> Users</a>
                                 </li>
                             </ul>

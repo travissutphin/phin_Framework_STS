@@ -22,24 +22,25 @@
 */
 	function read_Categories($id=FALSE,$site_fk=FALSE)
 	{
-	  $sql = ' SELECT '.COLUMNS_CATEGORIES.' FROM CATEGORIES cat ';
+		$sql = ' SELECT '.COLUMNS_CATEGORIES.' FROM CATEGORIES cat ';
+		$sql.= ' WHERE 0=0 ';
+		
+		// by id
+		if($id !== FALSE)
+		{	$sql.= " AND cat.CATEGORY_ID = '$id' "; }
 
-	  // by id
-	  if($id !== FALSE)
-	  {	$sql.= " AND cat.CATEGORY_ID = '$id' "; }
+		// by site_fk
+		if($site_fk !== FALSE)
+		{	$sql.= " AND cat.SITE_FK = '$site_fk' "; }
 
-	  // by site_fk
-	  if($site_fk !== FALSE)
-	  {	$sql.= " AND cat.SITE_FK = '$site_fk' "; }
-	  
-	  $sql.= ' ORDER BY cat.CREATED_AT ';
-	  
-	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+		$sql.= ' ORDER BY cat.SEQ, cat.NAME ';
 
-	  if($result === false) 
-	  { error_report_Helpers('Error Reading Categories - (read_Categories)',$sql); }
-	  
-	  return $result;
+		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+
+		if($result === false) 
+		{ error_report_Helpers('Error Reading Categories - (read_Categories)',$sql); }
+
+		return $result;
 	}
 /*****************************************************************/
 
@@ -53,21 +54,22 @@
 	function read_values_Categories($id=FALSE,$site_fk=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_CATEGORIES.' FROM CATEGORIES cat ';
-
-	  // by id
-	  if($id !== FALSE)
-	  {	$sql.= " AND cat.CATEGORY_ID = '$id' "; }
-
-	  // by site_fk
-	  if($site_fk !== FALSE)
-	  {	$sql.= " AND cat.SITE_FK = '$site_fk' "; }
-	  
-	  $sql.= ' ORDER BY cat.CREATED_AT ';
+		$sql.= ' WHERE 0=0 ';
 		
+		// by id
+		if($id !== FALSE)
+		{	$sql.= " AND cat.CATEGORY_ID = '$id' "; }
+
+		// by site_fk
+		if($site_fk !== FALSE)
+		{	$sql.= " AND cat.SITE_FK = '$site_fk' "; }
+
+		$sql.= ' ORDER BY cat.SEQ, cat.NAME ';
+
 		// error reporting 
 		if($result === false) 
 		{ error_report_Helpers('Error Reading Categories Values - (read_values_Categories)',$sql); }
-		
+
 		// create array of values from this record
 		$array = array();
 		$data = $_SESSION['FETCH_ARRAY']($result);
@@ -77,7 +79,7 @@
 			if(!is_numeric($key))
 			{ $array = array_merge($array, array(strtolower($key) => $value)); }
 		}  
-		
+
 		return $array;
 	}
 /*****************************************************************/
@@ -113,11 +115,11 @@
   * @param	$id(selected record) - $value(class, id, etc)
   * @return none - echo out list
 */
-	function html_list_Categories($id=FALSE,$site_fk=FALSE)
+	function html_list_Categories($id=FALSE,$site_fk=FALSE,$field_name=FALSE,$class='form-control')
 	{
 		$result = read_Categories($id=FALSE,$site_fk=FALSE);
 
-		echo '<select name="CATEGORY_ID" "'.$values.'">';
+		echo '<select name="'.$field_name.'" class="'.$class.'">';
 		while($data = $_SESSION['FETCH_ARRAY']($result))
 		{
 			if($data['CATEGORY_ID'] == $id){ $selected="selected"; }else{ $selected=""; }

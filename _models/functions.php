@@ -22,24 +22,25 @@
 */
 	function read_Models($id=FALSE,$site_fk=FALSE)
 	{
-	  $sql = ' SELECT '.COLUMNS_MODELS.' FROM MODELS mod ';
+		$sql = ' SELECT '.COLUMNS_MODELS.' FROM MODELS model ';
+		$sql.= ' WHERE 0=0 ';
+	
+		// by id
+		if($id !== FALSE)
+		{	$sql.= " AND model.MODEL_ID = '$id' "; }
 
-	  // by id
-	  if($id !== FALSE)
-	  {	$sql.= " AND mod.MODEL_ID = '$id' "; }
+		// by site_fk
+		if($site_fk !== FALSE)
+		{	$sql.= " AND model.SITE_FK = '$site_fk' "; }
 
-	  // by site_fk
-	  if($site_fk !== FALSE)
-	  {	$sql.= " AND mod.SITE_FK = '$site_fk' "; }
-	  
-	  $sql.= ' ORDER BY mod.ORDER ';
-	  
-	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+		$sql.= ' ORDER BY model.SEQ DESC';
 
-	  if($result === false) 
-	  { error_report_Helpers('Error Reading Models - (read_Models)',$sql); }
-	  
-	  return $result;
+		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+
+		if($result === false) 
+		{ error_report_Helpers('Error Reading Models - (read_Models)',$sql); }
+
+		return $result;
 	}
 /*****************************************************************/
 
@@ -53,21 +54,22 @@
 	function read_values_Models($id=FALSE,$site_fk=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_MODELS.' FROM MODELS mod ';
-
-	  // by id
-	  if($id !== FALSE)
-	  {	$sql.= " AND mod.MODEL_ID = '$id' "; }
-
-	  // by site_fk
-	  if($site_fk !== FALSE)
-	  {	$sql.= " AND mod.SITE_FK = '$site_fk' "; }
-	  
-	  $sql.= ' ORDER BY mod.ORDER ';
+		$sql.= ' WHERE 0=0 ';
 		
+		// by id
+		if($id !== FALSE)
+		{	$sql.= " AND mod.MODEL_ID = '$id' "; }
+
+		// by site_fk
+		if($site_fk !== FALSE)
+		{	$sql.= " AND mod.SITE_FK = '$site_fk' "; }
+
+		$sql.= ' ORDER BY mod.ORDER ';
+
 		// error reporting 
 		if($result === false) 
 		{ error_report_Helpers('Error Reading Models Values - (read_values_Models)',$sql); }
-		
+
 		// create array of values from this record
 		$array = array();
 		$data = $_SESSION['FETCH_ARRAY']($result);
@@ -77,7 +79,7 @@
 			if(!is_numeric($key))
 			{ $array = array_merge($array, array(strtolower($key) => $value)); }
 		}  
-		
+
 		return $array;
 	}
 /*****************************************************************/
@@ -113,18 +115,17 @@
   * @param	$id(selected record) - $value(class, id, etc)
   * @return none - echo out list
 */
-	function html_list_Models($id=FALSE,$site_fk=FALSE)
+	function html_list_Models($id=FALSE,$site_fk=FALSE,$field_name=FALSE,$class=FALSE)
 	{
 		$result = read_Models($id=FALSE,$site_fk=FALSE);
-
-		echo '<select name="MODEL_ID" "'.$values.'">';
+		
+		echo '<select name="'.$field_name.'" class="'.$class.'">';
 		while($data = $_SESSION['FETCH_ARRAY']($result))
 		{
-			if($data['CATEGORY_ID'] == $id){ $selected="selected"; }else{ $selected=""; }
+			if($data['MODEL_ID'] == $id){ $selected="selected"; }else{ $selected=""; }
 			echo '<option value="'.$data['MODEL_ID'].'" '.$selected.'>'.$data['MODEL'].'</option>';  
 		}
 		echo '</select>';
-	 
 	}
 /*****************************************************************/
 	
