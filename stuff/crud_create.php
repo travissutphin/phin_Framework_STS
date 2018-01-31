@@ -53,12 +53,12 @@ include('controller.php');
                             
                             <div class="col-xs-4">
                             	Model:<br />
-                            	<?php html_list_Models($id=FALSE,$site_fk=FALSE, $field_name='MODEL_FK', $class='form-control'); ?>
+                            	<?php html_list_Models($id=FALSE,$site_fk=SITE_ID, $field_name='MODEL_FK', $class='form-control'); ?>
                             </div>
                             
                             <div class="col-xs-4">
                             	Category:<br />
-                            	<?php html_list_Categories($id=FALSE,$site_fk=FALSE,$field_name='CATEGORY_FK',$class='form-control'); ?>
+                            	<?php html_list_Categories($id=FALSE,$site_fk=SITE_ID,$field_name='CATEGORY_FK',$class='form-control'); ?>
                             </div>
                             
 							<div class="col-xs-4">

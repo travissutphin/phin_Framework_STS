@@ -167,6 +167,8 @@
 */
 	function update_Stuff()
 	{	  	
+			$message = 'updated';	
+		
 			$data_update = "";
 			foreach ($_POST as $key => $value) 
 			{

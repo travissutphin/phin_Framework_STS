@@ -45,14 +45,14 @@
 */
 	function html_list_Years_to_Present_HTML_Select_Lists($field_name='',$value=FALSE,$class='form-control')
 	{
-		$year_loop = SITE_YEAR_START; // YEAR_START from _system/config.php
+		$year_loop = SITE_YEAR_START; // SITE_YEAR_START from _system/config.php
 		$year_current = date('Y');
 		
 		echo "<select name='$field_name' class='$class'>";
 		echo '<option value="">Select Year</option>'; 
 		while($year_loop <= $year_current){
-			if($value == $year_loop){ $selected_yes="selected"; }else{ $selected_yes=""; }
-			echo '<option value=" '.$year_loop.' " '.$selected_yes.'>'.$year_current.'</option>'; 
+			if($value == $year_current){ $selected_yes="selected"; }else{ $selected_yes=""; }
+			echo '<option value=" '.$year_current.' " '.$selected_yes.'>'.$year_current.'</option>'; 
 			$year_current--;
 		}
 		echo '</select>';		

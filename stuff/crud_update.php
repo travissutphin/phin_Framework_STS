@@ -10,7 +10,7 @@ include('controller.php');
       
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Update User</h1>
+            <h1 class="page-header">Update <?php echo SITE_DISPLAY_NAME; ?> Stuff</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -33,28 +33,19 @@ include('controller.php');
                         
                         <form name="manage" action="<?php echo current_page_Url(); ?>" method="post" role="form" >                    
                             
-                            <div class="col-xs-4">
-                            First Name:<br />
-                            <input name="USER_NAME_FIRST" type="text" class="form-control" value="<?php echo $row['USER_NAME_FIRST']; ?>" />
+							<div class="col-xs-4">
+                            	Title:<br />
+                            	<input name="TITLE" type="text" class="form-control" value="<?php echo $row['TITLE']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
-                            Last Name:<br />
-                            <input name="USER_NAME_LAST" type="text" class="form-control" value="<?php echo $row['USER_NAME_LAST']; ?>" />
+                            	Year Start:<br />
+                            	<?php html_list_Years_to_Present_HTML_Select_Lists($field_name="YEAR_START_DK",$value=$row['YEAR_START_DK'],$class='form-control'); ?>
                             </div>
-                            
-                            <div class="col-xs-12">
-                            &nbsp;
-                            </div>
-                            
+
                             <div class="col-xs-4">
-                            Email:<br />
-                            <input name="USER_EMAIL" type="email" class="form-control" value="<?php echo $row['USER_EMAIL']; ?>" />
-                            </div>
-                            
-                            <div class="col-xs-4">
-                            	Password:<br />
-                            	<input name="USER_PASSWORD" type="password" class="form-control" value="<?php echo $row['USER_PASSWORD']; ?>" />
+                            	Year End:<br />
+                            	<?php html_list_Years_to_Present_HTML_Select_Lists($field_name='YEAR_END_DK',$value=$row['YEAR_END_DK'],$class='form-control'); ?>
                             </div>
                             
                             <div class="col-xs-12">
@@ -62,18 +53,42 @@ include('controller.php');
                             </div>
                             
                             <div class="col-xs-4">
-                            Role:<br />
-                            <?php html_list_Roles($row['ROLE_ID'],'class="form-control"'); ?>
-                          	</div>
+                            	Model:<br />
+                            	<?php html_list_Models($id=$row['MODEL_FK'],$site_fk=SITE_ID, $field_name='MODEL_FK', $class='form-control'); ?>
+                            </div>
                             
-                          	<div class="col-xs-8">
-                          		&nbsp;
-                          	</div>
+                            <div class="col-xs-4">
+                            	Category:<br />
+                            	<?php html_list_Categories($id=$row['CATEGORY_FK'],$site_fk=SITE_ID,$field_name='CATEGORY_FK',$class='form-control'); ?>
+                            </div>
+                            
+							<div class="col-xs-4">
+                            	Status:<br />
+                            	<?php html_list_Status_HTML_Select_Lists($field_name='STATUS',$value=$row['STATUS'],$class='form-control') ?>
+                            </div>
+							
+                            <div class="col-xs-12">
+                            	&nbsp;
+                            </div>
+
+                            <div class="col-xs-4">
+                            	Image:
+								<input type="file" />
+                            </div>
+							
+							<div class="col-xs-8">
+                            	Description:
+								<textarea name="DESCRIPTION_LONG" class="form-control" rows=8"><?php echo $row['DESCRIPTION_LONG'] ?></textarea>
+                            </div>
+	
+                            <div class="col-xs-12">
+                            	&nbsp;
+                            </div>
 
                           	<div class="col-xs-4">
                           		<button name="cancel" class="btn btn-danger btn-outline"> Cancel </button>
                           		<button name="update" class="btn btn-success btn-outline"> Save </button>
-                          		<input name="USER_ID" type="hidden" value="<?php echo $row['USER_ID']; ?>" />               
+                          		<input name="STUFF_ID" type="hidden" value="<?php echo $row['STUFF_ID']; ?>" />               
                           	</div>
                         </form>
                         

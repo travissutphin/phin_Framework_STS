@@ -117,7 +117,7 @@
 */
 	function html_list_Categories($id=FALSE,$site_fk=FALSE,$field_name=FALSE,$class='form-control')
 	{
-		$result = read_Categories($id=FALSE,$site_fk=FALSE);
+		$result = read_Categories(FALSE,$site_fk);
 
 		echo '<select name="'.$field_name.'" class="'.$class.'">';
 		while($data = $_SESSION['FETCH_ARRAY']($result))
