@@ -13,9 +13,21 @@ include('controller.php');
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    
+					<?php if(isset($_SESSION['site_id'])){ ?>
+						
+						<h1 class="page-header">
+							<?php echo $display_values_active_site['display_name']; ?> Dashboard
+						</h1>
+						
+					<?php  }else{ ?>
 					
-					<?php  ?>
+						<h1 class="page-header">
+							Please select a site to manage
+						</h1>
+					
+					<?php } ?>
+					
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

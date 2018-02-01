@@ -84,6 +84,7 @@
 	   unset($_SESSION['users.name_last']) ;
 	   unset($_SESSION['users.role_id']) ;
 	   unset($_SESSION['users.login_attempts']) ;
+	   unset($_SESSION['site_id']);
 	   unset($_SESSION);
 		
 	  header( 'Location: '.site_Url() ) ; 	

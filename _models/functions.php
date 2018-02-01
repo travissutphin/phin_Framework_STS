@@ -53,19 +53,21 @@
 */
 	function read_values_Models($id=FALSE,$site_fk=FALSE)
 	{
-		$sql = ' SELECT '.COLUMNS_MODELS.' FROM MODELS mod ';
+		$sql = ' SELECT '.COLUMNS_MODELS.' FROM MODELS model ';
 		$sql.= ' WHERE 0=0 ';
 		
 		// by id
 		if($id !== FALSE)
-		{	$sql.= " AND mod.MODEL_ID = '$id' "; }
+		{	$sql.= " AND model.MODEL_ID = '$id' "; }
 
 		// by site_fk
 		if($site_fk !== FALSE)
-		{	$sql.= " AND mod.SITE_FK = '$site_fk' "; }
+		{	$sql.= " AND model.SITE_FK = '$site_fk' "; }
 
-		$sql.= ' ORDER BY mod.ORDER ';
+		$sql.= ' ORDER BY model.SEQ ';
 
+		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+			
 		// error reporting 
 		if($result === false) 
 		{ error_report_Helpers('Error Reading Models Values - (read_values_Models)',$sql); }

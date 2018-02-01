@@ -1,7 +1,7 @@
 <?php
 /* USERS.INDEX */
 /*****************************************************************/
-	
-  header( 'Location: view.php' ) ;
+
+	header( 'Location: view.php' ) ;
 	
 ?>

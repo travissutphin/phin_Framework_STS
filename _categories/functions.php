@@ -66,6 +66,8 @@
 
 		$sql.= ' ORDER BY cat.SEQ, cat.NAME ';
 
+		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+		
 		// error reporting 
 		if($result === false) 
 		{ error_report_Helpers('Error Reading Categories Values - (read_values_Categories)',$sql); }

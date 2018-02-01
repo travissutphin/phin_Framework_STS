@@ -49,7 +49,7 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 	}
 	else
 	{
-		$records_all = read_Stuff();
+		$records_all = read_Stuff(FALSE,$_SESSION['site_id']);
 		$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
 	}
 ?>

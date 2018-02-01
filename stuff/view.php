@@ -39,12 +39,14 @@ include('controller.php');
                             </thead>
                             </form>
                             <tbody>
-                            <?php while ($row = $_SESSION['FETCH_ARRAY']($records_all)){ ?>                      
+                            <?php while ($row = $_SESSION['FETCH_ARRAY']($records_all)){ ?>
+								<?php $display_model = read_values_Models($row['MODEL_FK'],$site_fk=FALSE); ?>
+								<?php $display_category = read_values_Categories($row['CATEGORY_FK'],$site_fk=FALSE); ?>
                               <tr>
                                 <td><?php echo $row['TITLE']; ?></td>
                                 <td><?php echo $row['YEAR_START_DK'].' '.$row['YEAR_END_DK']; ?></td>
-                                <td><?php echo $row['MODEL_FK']; ?></td>                                           
-                                <td><?php echo $row['CATEGORY_FK']; ?></td>
+                                <td><?php echo $display_model['model'];  ?></td>                                           
+                                <td><?php echo $display_category['name']; ?></td>
 								<td><?php echo $row['STATUS']; ?></td>
                                 <td>
                                 <form name="manage" action="crud_update.php" method="post">
