@@ -2,6 +2,9 @@
 /* STUFF.CONTROLLER */
 /*****************************************************************/
 
+// use datatables on the view page
+$show_datatables = TRUE;
+
 $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 
 /**
@@ -49,7 +52,17 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 	}
 	else
 	{
-		$records_all = read_Stuff(FALSE,$_SESSION['site_id']);
-		$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
+		
+		if(isset($_SESSION['site_id'])){
+		
+			$records_all = read_Stuff(FALSE,$_SESSION['site_id']);
+			$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
+		
+		}else{
+		
+			$records_all = read_Stuff(FALSE,FALSE,$_SESSION['users.id'],FALSE,FALSE,FALSE,FALSE);
+			$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
+		
+		}
 	}
 ?>

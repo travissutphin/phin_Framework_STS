@@ -1,60 +1,42 @@
 <?php
-/* USERS.CRUD_UPDATE */
+/* ADVERTISERS.CRUD_UPDATE */
 /*****************************************************************/
 include('../templates/admin_header.php');
 include('controller.php');
 
 ?>
-<?php include('../templates/admin_nav.php'); ?>
-<div id="page-wrapper">
-      
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Update User</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
-      
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <?php echo messages($message); ?>
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="table-responsive">
-   
-                <fieldset>  
-        
-					<legend></legend>
-                    <?php while ($row = $_SESSION['FETCH_ARRAY']($record_by_id)){ ?>
+
+	<?php include('../templates/admin_nav.php'); ?>
+
+				 <!-- Content Wrapper. Contains page content -->
+		  <div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+			  <h1>Update Advertiser</h1>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+					
+			  <!-- Default box -->
+			  <div class="box">
+				
+				<?php echo messages($message); ?>
+				
+				<div class="box-body">
+					
+					<?php while ($row = $_SESSION['FETCH_ARRAY']($record_by_id)){ ?>
                         
                         <form name="manage" action="<?php echo current_page_Url(); ?>" method="post" role="form" >                    
                             
-                            <div class="col-xs-4">
-                            First Name:<br />
-                            <input name="USER_NAME_FIRST" type="text" class="form-control" value="<?php echo $row['USER_NAME_FIRST']; ?>" />
+                                                     <div class="col-xs-4">
+                            	Name:<br />
+                            	<input name="NAME" type="text" class="form-control" value="<?php echo $row['NAME']; ?>" />
                             </div>
                             
                             <div class="col-xs-4">
-                            Last Name:<br />
-                            <input name="USER_NAME_LAST" type="text" class="form-control" value="<?php echo $row['USER_NAME_LAST']; ?>" />
-                            </div>
-                            
-                            <div class="col-xs-12">
-                            &nbsp;
-                            </div>
-                            
-                            <div class="col-xs-4">
-                            Email:<br />
-                            <input name="USER_EMAIL" type="email" class="form-control" value="<?php echo $row['USER_EMAIL']; ?>" />
-                            </div>
-                            
-                            <div class="col-xs-4">
-                            	Password:<br />
-                            	<input name="USER_PASSWORD" type="password" class="form-control" value="<?php echo $row['USER_PASSWORD']; ?>" />
+                            	Contact:<br />
+                            	<input name="CONTACT" type="text" class="form-control" value="<?php echo $row['CONTACT']; ?>" />
                             </div>
                             
                             <div class="col-xs-12">
@@ -62,39 +44,40 @@ include('controller.php');
                             </div>
                             
                             <div class="col-xs-4">
-                            Role:<br />
-                            <?php html_list_Roles($row['ROLE_ID'],'class="form-control"'); ?>
-                          	</div>
+                            	Link:<br />
+                            	<input name="LINK" type="url" class="form-control" value="<?php echo $row['LINK']; ?>" />
+                            </div>
+                            
+                            <div class="col-xs-12">
+                            	&nbsp;
+                            </div>
                             
                           	<div class="col-xs-8">
                           		&nbsp;
                           	</div>
 
                           	<div class="col-xs-4">
-                          		<button name="cancel" class="btn btn-danger btn-outline"> Cancel </button>
-                          		<button name="update" class="btn btn-success btn-outline"> Save </button>
-                          		<input name="USER_ID" type="hidden" value="<?php echo $row['USER_ID']; ?>" />               
+                          		<input name="update" type="submit" class="btn btn-success btn-outline" value="Update" />
+                          		<input name="ADVERTISER_ID" type="hidden" value="<?php echo $row['ADVERTISER_ID']; ?>" />               
                           	</div>
                         </form>
                         
                     <?php } ?>
-                
-                </fieldset> 
-        
-                    </div>
-                    <!-- /.table-responsive -->
-                   
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
-            
-</div>
+					
+				</div>
+				<!-- /.box-body -->
+				<div class="box-footer">
+				  
+				</div>
+				<!-- /.box-footer-->
+			  </div>
+			  <!-- /.box -->
 
+			</section>
+			<!-- /.content -->
+		  </div>
+		  <!-- /.content-wrapper -->   
+    
 <?php
 /*****************************************************************/
 include('../templates/admin_footer.php');

@@ -10,20 +10,21 @@
 	function create_Advertisers()
 	{	  		
 		// set needed variables
-		$createdAt = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
+		$_POST['CREATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
 				  
-		$data_columns = "";
-		$data_values = "";
-
-		foreach ($_POST as $key => $value) 
-		{
-			// x_ = add to posted vars you don't want included here that are not listed in $_SESSION['ignore']
-			if(!in_array($key,$_SESSION['ignore']) and strpos($key, 'x_') === FALSE) // $_SESSION['ignore'] = _system/config.php
-			{
-				$value = cleanInput_Security($value);
-				$data_columns.= $key.",";
-				$data_values.= "'$value',";
-			}
+				$data_columns = "";
+				$data_values = "";
+		
+				foreach ($_POST as $key => $value) 
+				{
+					// x_ = add to posted vars you don't want included here that are not listed in $_SESSION['ignore']
+					if(!in_array($key,$_SESSION['ignore']) and strpos($key, 'x_') === FALSE) // $_SESSION['ignore'] = _system/config.php
+					{
+						$value = cleanInput_Security($value);
+						$data_columns.= $key.",";
+						$data_values.= " '$value',";
+					}
+				}
 
 			$data_columns = rtrim($data_columns, ','); // remove comma from end of string
 			$data_values = rtrim($data_values, ','); // remove comma from end of string
@@ -43,8 +44,6 @@
 		  
 		  // clear values as session vars
 		  clear_postVars_to_sessionVars_Helpers();
-		
-		}
 			
 		return $message;
 	}
@@ -58,7 +57,8 @@
 	function read_Advertisers($id=FALSE,$site_fk=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_ADVERTISERS.' FROM ADVERTISERS adv ';
-
+		$sql.= ' WHERE 0=0 ';
+		
 		// by id
 		if($id !== FALSE)
 		{	$sql.= " AND adv.ADVERTISER_ID = '$id' "; }
@@ -66,6 +66,8 @@
 		// by site_fk
 		if($site_fk !== FALSE)
 		{	$sql.= " AND adv.SITE_FK = '$site_fk' "; }
+		
+		$sql.= ' AND adv.DELETED_AT IS NULL ';
 		  
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
@@ -86,6 +88,7 @@
 	function read_values_Advertisers($id=FALSE,$site_fk=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_ADVERTISERS.' FROM ADVERTISERS adv ';
+		$sql.= ' WHERE 0=0 ';
 
 		// by id
 		if($id !== FALSE)
@@ -94,7 +97,9 @@
 		// by site_fk
 		if($site_fk !== FALSE)
 		{	$sql.= " AND adv.SITE_FK = '$site_fk' "; }
-		  
+
+		$sql.= ' AND adv.DELETED_AT IS NULL ';
+		
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
 		// error reporting 
@@ -122,7 +127,9 @@
 */
 	function update_Advertisers()
 	{	  	
+			$_POST['UPDATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
 			$data_update = "";
+			
 			foreach ($_POST as $key => $value) 
 			{
 				// x_ = add to posted vars you don't want included here that are not listed in $_SESSION['ignore']
@@ -144,6 +151,8 @@
 			// error reporting 
 			if($result === false) 
 			{ error_report_Helpers('Error Updating Advertisers - (update_Advertisers)',$sql); }
+			
+			$message = 'updated';	
 		
 		return $message;
 	}
@@ -163,7 +172,7 @@
 	  {
 		$sql = 	"UPDATE ADVERTISERS
 					SET DELETED_AT = '$deletedAt'
-					WHERE ADVERTISERS_ID = '$_POST[ADVERTISER_ID]'
+					WHERE ADVERTISER_ID = '$_POST[ADVERTISER_ID]'
 					";
 					
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
@@ -184,11 +193,19 @@
   * @param	$id(selected record) - $value(class, id, etc)
   * @return none - echo out list
 */
-	function html_list_Advertisers($id=FALSE,$site_fk=FALSE)
+	function html_list_Advertisers($id=FALSE,$site_fk=FALSE,$values=FALSE)
 	{
 	
-		// removed, not sure how/why/if we need this.
-	 
+		$result = read_Advertisers(FALSE,$site_fk,FALSE);
+	  
+		echo '<select name="ADVERTISER_FK" " '.$values.' ">';
+		while($data = $_SESSION['FETCH_ARRAY']($result))
+		{
+		if($data['ADVERTISER_ID'] == $id){ $selected="selected"; }else{ $selected=""; }
+		echo '<option value="'.$data['ADVERTISER_ID'].'" '.$selected.'>'.$data['NAME'].'</option>';  
+		}
+		echo '</select>';
+
 	}
 /*****************************************************************/
 

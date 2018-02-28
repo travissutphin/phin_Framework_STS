@@ -39,7 +39,7 @@
 	{		
 		$inactive = LOGIN_TIMEOUT; // set timeout period in seconds (located in /_system/config.php)
 		
-		if(!isset($_SESSION['users.is_logged_in']))
+		if(!isset($_SESSION['members.is_logged_in']))
 		{
 			session_destroy();
 			header( 'Location: '.site_Url().'login/view.php?message=login' );
@@ -57,6 +57,22 @@
 			}
 		}
 		$_SESSION['timeout'] = time();
+	}
+/*****************************************************************/
+
+/**
+  * @desc	check that user is logged in
+  * @param	
+  * @return 
+*/
+	function role_access_only_Security($role_id) 
+	{		
+		if(isset($_SESSION['members.role_id']) and $_SESSION['members.role_id'] != $role_id )
+		{
+			session_destroy();
+			header( 'Location: '.site_Url().'login/view.php?message=login' );
+			exit;
+		}
 	}
 /*****************************************************************/
 

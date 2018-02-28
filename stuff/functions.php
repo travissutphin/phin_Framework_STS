@@ -10,8 +10,29 @@
 	function create_Stuff()
 	{	  		
 		// set needed variables
-		$createdAt = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
-								
+		$_POST['CREATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
+	
+		// set the SITE_ID
+		$_POST['SITE_FK'] = SITE_ID;
+		$_POST['USER_FK'] = $_SESSION['users.id'];
+		
+		//** Do not add trailing / to $move_to
+
+		if($_FILES['PRIMARY_IMAGE']["name"] != ''){
+
+			$_POST['PRIMARY_IMAGE'] = file_Uploads('PRIMARY_IMAGE','../upload_repository/',FALSE); // $name, $move_to, $max_size			
+		
+			// resize the image
+			/*
+			$src_filename = '../temp/'.$_POST['PRIMARY_IMAGE'];
+			$dst_filename = '../upload_repository/'.$_POST['PRIMARY_IMAGE'];
+			$dst_width = '350';
+			$dst_height = '350';
+			$fill = 'squeeze';
+			resize_Images($src_filename, $dst_filename, $dst_width, $dst_height, $fill, $quality=100, $png_filters=PNG_NO_FILTER);
+			*/
+		}
+		
 				$data_columns = "";
 				$data_values = "";
 
@@ -90,6 +111,8 @@
 	  if($status_dk !== FALSE)
 	  {	$sql.= " AND stuff.YEAR_DK = '$year_dk' "; }
 	  
+	  $sql.= ' AND stuff.DELETED_AT IS NULL ';
+	  
 	  $sql.= ' ORDER BY stuff.CREATED_AT ';
 	  
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
@@ -167,6 +190,8 @@
 */
 	function update_Stuff()
 	{	  	
+			$_POST['UPDATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
+			
 			$message = 'updated';	
 		
 			$data_update = "";

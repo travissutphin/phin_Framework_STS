@@ -47,11 +47,11 @@
 	{		
 		$data_user = read_Users(FALSE,$_POST['EMAIL']);
 		$num = $_SESSION['NUM_ROWS']($data_user);  
-				
+
 		if($num == "1")// found email
 		{
 			$email = $_POST['EMAIL'];
-			while($data = $_SESION['FETCH_ARRAY']($data_user))
+			while($data = $_SESSION['FETCH_ARRAY']($data_user))
 	  		{
 				$password = $data['PASSWORD'];
 			}

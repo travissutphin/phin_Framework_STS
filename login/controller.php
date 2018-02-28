@@ -31,9 +31,9 @@
   * @param	$_POST vars
   * @return non - redirect occurs within the function
 */
-	if(isset($_POST['register']))
+	if(isset($_POST['create']))
 	{
-		create_Users(); 	  
+		$_SESSION['message'] = create_Users(); 	  
 	}
 /*****************************************************************/
 
@@ -42,9 +42,9 @@
  *
  *
  */
-	if(isset($_POST['forgot_password']))
+	if(isset($_POST['recover_password']))
 	{
-		retrieve_password_Email($_POST['email']);
+		retrieve_password_Email($_POST['EMAIL']);
 	}
 /*****************************************************************/
 

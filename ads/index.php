@@ -1,7 +1,7 @@
 <?php
-/* USERS.INDEX */
+/* ADS.INDEX */
 /*****************************************************************/
 	
-  header( 'Location: view.php' ) ;
-	
+	header( 'Location: view.php?unset=advertiser_id' ) ;
+	exit;
 ?>

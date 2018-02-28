@@ -66,13 +66,12 @@
 */
 	function html_list_Status_HTML_Select_Lists($field_name='',$value=FALSE,$class='form-control')
 	{
-		if($value == 'active'){ $selected_active="selected"; }else{ $selected_active=""; }
-		if($value == 'inactive'){ $selected_inactive="selected"; }else{ $selected_inactive=""; }
+		if($value == 'Active'){ $selected_active="selected"; }else{ $selected_active=""; }
+		if($value == 'Inactive'){ $selected_inactive="selected"; }else{ $selected_inactive=""; }
 		
 		echo "<select name='$field_name' class='$class'>";
-		echo '<option value="">Status</option>'; 
-		echo '<option value="active" '.$selected_active.'>Active</option>'; 
-		echo '<option value="inactive" '.$selected_inactive.'>Inactive</option>';  
+		echo '<option value="Active" '.$selected_active.'>Active</option>'; 
+		echo '<option value="Inactive" '.$selected_inactive.'>Inactive</option>';  
 		echo '</select>';		
 	}
 /*****************************************************************/

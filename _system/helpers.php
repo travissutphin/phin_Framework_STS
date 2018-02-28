@@ -145,12 +145,13 @@
 	{
 	  if($length == FALSE){ $length = 5; }
 	  
-	  $characters = '0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*';
+	  // NOTE o, O, and 0 are not included in the random string to help reduse confusion
+	  $characters = '123456789abcdefghijklmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ@#';
 	  $string = '';
 	   
 	  for ($p = 0; $p <= $length; $p++)
 	  {
-	  	$string .= $characters[mt_rand(0, strlen($characters))];
+	  	$string.= $characters[mt_rand(0, strlen($characters))];
 	  }
 	  
 	  return $string;

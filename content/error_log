@@ -1,0 +1,55 @@
+[04-Nov-2015 10:05:11 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[04-Nov-2015 10:05:11 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[04-Nov-2015 10:06:18 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[04-Nov-2015 10:06:18 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[09-Nov-2015 10:13:07 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 15
+[09-Nov-2015 10:17:22 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 15
+[09-Nov-2015 10:35:42 US/Eastern] PHP Warning:  Invalid argument supplied for foreach() in /home/texas/public_html/admin/_user_levels/functions.php on line 232
+[09-Nov-2015 10:41:07 US/Eastern] PHP Warning:  Invalid argument supplied for foreach() in /home/texas/public_html/admin/_user_levels/functions.php on line 232
+[09-Nov-2015 10:41:31 US/Eastern] PHP Warning:  Invalid argument supplied for foreach() in /home/texas/public_html/admin/_user_levels/functions.php on line 232
+[09-Nov-2015 10:42:46 US/Eastern] PHP Warning:  Invalid argument supplied for foreach() in /home/texas/public_html/admin/_user_levels/functions.php on line 232
+[09-Nov-2015 10:43:15 US/Eastern] PHP Warning:  Invalid argument supplied for foreach() in /home/texas/public_html/admin/_user_levels/functions.php on line 232
+[09-Nov-2015 10:44:03 US/Eastern] PHP Warning:  Invalid argument supplied for foreach() in /home/texas/public_html/admin/_user_levels/functions.php on line 232
+[09-Nov-2015 11:06:59 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 15
+[09-Nov-2015 11:08:24 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 191
+[09-Nov-2015 11:09:07 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 15
+[09-Nov-2015 11:10:23 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 15
+[09-Nov-2015 11:31:08 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 201
+[09-Nov-2015 11:31:40 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 201
+[09-Nov-2015 11:32:48 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 201
+[09-Nov-2015 11:36:51 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 201
+[09-Nov-2015 11:38:22 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 201
+[09-Nov-2015 11:38:56 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 201
+[09-Nov-2015 11:39:09 US/Eastern] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /home/texas/public_html/admin/content/functions.php on line 201
+[09-Nov-2015 11:39:52 US/Eastern] PHP Warning:  addslashes() expects parameter 1 to be string, array given in /home/texas/public_html/admin/content/functions.php on line 231
+[19-Jan-2016 11:59:35 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/crud_update.php on line 123
+[08-Feb-2016 19:48:03 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[08-Feb-2016 19:48:03 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[08-Feb-2016 19:55:36 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[08-Feb-2016 19:55:36 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[19-Feb-2016 09:10:54 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[19-Feb-2016 09:10:54 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[19-Feb-2016 09:11:18 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[19-Feb-2016 09:11:18 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[19-Feb-2016 09:12:01 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[19-Feb-2016 09:12:01 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[11-May-2016 12:13:42 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[11-May-2016 12:13:42 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[11-May-2016 12:13:54 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[11-May-2016 12:13:54 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[11-May-2016 12:13:58 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[11-May-2016 12:13:58 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 197
+[13-Feb-2017 02:42:03 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/crud_update.php on line 123
+[17-Mar-2017 17:51:38 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[17-Mar-2017 17:51:45 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[17-Mar-2017 17:51:50 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[17-Mar-2017 17:51:52 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[20-Aug-2017 10:39:03 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[15-Oct-2017 10:05:07 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[15-Oct-2017 10:05:30 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[15-Oct-2017 10:05:40 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[15-Oct-2017 10:05:48 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[15-Oct-2017 10:05:55 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[15-Oct-2017 10:06:03 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[15-Oct-2017 10:06:10 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144
+[15-Oct-2017 10:07:39 US/Eastern] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/texas/public_html/admin/content/view.php on line 144

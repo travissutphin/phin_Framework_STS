@@ -22,6 +22,7 @@
 	exit;  
   }
   
+  echo $_REQUEST['alias'];
   // send user to the login page
   header( 'Location: login/' ) ;
  
