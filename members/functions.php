@@ -164,7 +164,10 @@
 	function update_Members()
 	{	  	
 		
-		$_POST['ROLE_FK'] = $_POST['ROLE_ID'];
+		if(isset($_POST['ROLE_ID'])){
+			$_POST['ROLE_FK'] = $_POST['ROLE_ID'];
+		}
+		
 		$num_rows = read_Members(FALSE,$_POST['EMAIL']);
 		
 		if(!validate_Email($_POST['EMAIL'])) { // check for valid email

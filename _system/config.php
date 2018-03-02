@@ -29,7 +29,7 @@
   * @param	
   * @return 
 */
-	$_SESSION['ignore'] = array("create", "update", "delete", "multiselect", "CONTENT_ID", "CONTENT_TYPE_ID", "MEMBER_ID", "ROLE_ID", "STUFF_ID", "STUFF_IMAGE_ID", "STUFF_MEMBERSHIP_LEVEL_ID", "STUFF_ABUSE_REPORTED_ID", "STUFF_ACTIVITY_TRACKING_ID", "CATEGORY_ID", "MAKE_ID", "MODEL_ID", "SITE_ID", "ADVERTISER_ID", "AD_ID", "IP_TRACKING_ID", "EVENT_ID", "GALLERY_ID", "GALLERY_IMAGE_ID", "");
+	$_SESSION['ignore'] = array("create", "update", "delete", "multiselect", "CONTENT_ID", "CONTENT_TYPE_ID", "EVENT_ID", "MEMBER_ID", "ROLE_ID", "STUFF_ID", "STUFF_IMAGE_ID", "STUFF_MEMBERSHIP_LEVEL_ID", "STUFF_ABUSE_REPORTED_ID", "STUFF_ACTIVITY_TRACKING_ID", "CATEGORY_ID", "MAKE_ID", "MODEL_ID", "SITE_ID", "ADVERTISER_ID", "AD_ID", "IP_TRACKING_ID", "EVENT_ID", "GALLERY_ID", "GALLERY_IMAGE_ID", "");
 	
 /*****************************************************************/	
 
@@ -71,6 +71,7 @@
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."advertisers\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."content\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."content_types\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."events\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."login\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."members\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."stuff\\functions.php");
@@ -112,7 +113,7 @@
   *			within the tbl_users table
   * @creats	define("COLUMNS_system_tbl_roles" ,"roles.ID, roles.NAME, roles.CREATED_AT, roles.UPDATED_AT, roles.DELETED_AT") 
 */ 
-	$table_x_alias = array("ADS"=>"ad","ADVERTISERS"=>"adv","CATEGORIES"=>"cat","CONTENT"=>"con", "CONTENT_TYPES"=>"ct",  "MODELS"=>"model", "ROLES"=>"roles", "SITES"=>"sites", "STUFF"=>"stuff", "MEMBERS"=>"mem");	
+	$table_x_alias = array("ADS"=>"ad","ADVERTISERS"=>"adv","CATEGORIES"=>"cat","CONTENT"=>"con", "CONTENT_TYPES"=>"ct", "EVENTS"=>"ev",  "MODELS"=>"model", "ROLES"=>"roles", "SITES"=>"sites", "STUFF"=>"stuff", "MEMBERS"=>"mem");	
 							
 	foreach($table_x_alias as $table => $alias)
 	{	

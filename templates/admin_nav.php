@@ -15,8 +15,7 @@
           </a>
 		  <ul class="treeview-menu">
             <li><a href="<?php echo site_Url(); ?>my_profile/view.php">"><i class="fa fa-user mr-5"></i>My Profile </a></li>
-			<li><a href="javascript:void()"><i class="fa fa-money mr-5"></i>My Balance</a></li>
-			<li><a href="javascript:void()"><i class="fa fa-envelope-open mr-5"></i>Inbox</a></li>
+			<li><a href="javascript:void()"><i class="fa fa-envelope-open mr-5"></i>Private Messages</a></li>
 			<li><a href="javascript:void()"><i class="fa fa-cog mr-5"></i>Account Setting</a></li>
 			<li><a href="<?php echo site_Url(); ?>login/view.php?logout"><i class="fa fa-power-off mr-5"></i>Logout</a></li>
           </ul>
@@ -32,6 +31,8 @@
           </a>
         </li>
 <!--- ADMIN NAVIGATION IF SITE SELECTED --->
+<!--------------------------------------------------------------------->
+
 		<?php if(isset($_SESSION['site_id']) and $_SESSION['members.role_id'] == '1'){ ?>
 	<!--- ADS --->
 		<li class="treeview">
@@ -61,7 +62,38 @@
             <li><a href="<?php echo site_Url(); ?>advertisers/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
           </ul>
         </li>
-	<!--- STUFF --->
+
+<!--- ADVERTISERS --->
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Advertisers</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+			<li><a href="<?php echo site_Url(); ?>advertisers/crud_create.php"><i class="fa fa-circle-thin"></i>Add</a></li>
+            <li><a href="<?php echo site_Url(); ?>advertisers/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
+          </ul>
+        </li>
+
+<!--- EVENTS --->
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Events</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+			<li><a href="<?php echo site_Url(); ?>events/crud_create.php"><i class="fa fa-circle-thin"></i>Add</a></li>
+            <li><a href="<?php echo site_Url(); ?>events/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
+          </ul>
+        </li>
+		
+<!--- STUFF --->
 		<li class="treeview">
           <a href="#">
             <i class="fa fa-th"></i>
@@ -74,7 +106,8 @@
             <li><a href="<?php echo site_Url(); ?>stuff/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
           </ul>
         </li>
-	<!--- USERS --->
+		
+<!--- MEMBERS--->
 		<li class="treeview">
           <a href="#">
             <i class="fa fa-th"></i>
@@ -88,8 +121,11 @@
             <li><a href="<?php echo site_Url(); ?>members/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
           </ul>
         </li>
-		
+
 <!--- MEMBER NAVIGATION --->
+<!------------------------------------------->
+
+<!--- STUFF --->
 		<?php }elseif(isset($_SESSION['users.role_id']) and $_SESSION['users.role_id'] == '2'){ ?>
 		
 		<li class="treeview">

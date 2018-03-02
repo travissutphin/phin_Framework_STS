@@ -42,7 +42,7 @@
 */
 	if(isset($_POST['update']))
 	{
-	  $message = update_Ads();
+	  $message = update_Members();
 	}
 /*****************************************************************/
 

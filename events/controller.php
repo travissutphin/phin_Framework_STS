@@ -1,5 +1,5 @@
 <?php
-/* STUFF.CONTROLLER */
+/* EVENTS.CONTROLLER */
 /*****************************************************************/
 
 $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
@@ -11,7 +11,7 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 */
 	if(isset($_POST['create']))
 	{
-	  $message = create_Stuff();
+	  $message = create_Events();
 	}
 /*****************************************************************/
 
@@ -22,7 +22,7 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 */
 	if(isset($_POST['update']))
 	{
-	  $message = update_Stuff();
+	  $message = update_Events();
 	}
 /*****************************************************************/
 
@@ -33,7 +33,7 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 */
 	if(isset($_POST['delete']))
 	{
-	  $message = delete_Stuff($_POST['STUFF_ID']);
+	  $message = delete_Events($_POST['EVENT_ID']);
 	  header( 'Location: view.php?message='.$message ) ;
 	}
 /*****************************************************************/
@@ -43,13 +43,13 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
   * @param	
   * @return 
 */
-	if(isset($_REQUEST['STUFF_ID']))
+	if(isset($_REQUEST['EVENT_ID']))
 	{
-		$record_by_id= read_Stuff($_REQUEST['STUFF_ID']);
+		$record_by_id= read_Events($_REQUEST['EVENT_ID']);
 	}
 	else
 	{
-		$records_all = read_Stuff();
+		$records_all = read_Events();
 		$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
 	}
 ?>

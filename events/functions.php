@@ -24,7 +24,7 @@
 					$data_columns.= $key.",";
 					$data_values.= "'$value',";
 				}
-
+			}
 				$data_columns = rtrim($data_columns, ','); // remove comma from end of string
 				$data_values = rtrim($data_values, ','); // remove comma from end of string
 				
@@ -51,8 +51,6 @@
 			  //{
 			//	$_SESSION[$key] = '';		  
 			  //}
-			
-			}
 			
 		return $message;
 	}

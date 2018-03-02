@@ -42,7 +42,7 @@ include('controller.php');
               	<div class="col-12">
               		<div class="profile-user-info">
 						<p>Email address </p>
-						<h6 class="margin-bottom">jhone.mical@yahoo.com</h6>
+						<h6 class="margin-bottom"><?php echo $records_by_member['email']; ?></h6>
 						<p>Phone</p>
 						<h6 class="margin-bottom">+11 123 456 7890</h6> 
 						<p>Address</p>
@@ -69,7 +69,7 @@ include('controller.php');
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               
-              <li><a class="active" href="#timeline" data-toggle="tab">Timeline</a></li>
+              <li><a class="active" href="#timeline" data-toggle="tab">Private Messages</a></li>
               <li><a href="#activity" data-toggle="tab">Activity</a></li>
               <li><a href="#settings" data-toggle="tab">Settings</a></li>
             </ul>
@@ -305,12 +305,12 @@ include('controller.php');
               <!-- /.tab-pane -->
               
               <div class="tab-pane" id="settings">
-                <form class="form-horizontal form-element col-12">
+               <form name="manage" action="<?php echo current_page_Url(); ?>" method="post" role="form" enctype="multipart/form-data">     
                   <div class="form-group row">
                     <label for="inputName" class="col-sm-2 control-label">First Name</label>
 
                     <div class="col-sm-10">
-                      <input type="name_first" class="form-control" id="inputName" placeholder="" value="<?php echo $records_by_member['name_first']; ?>">
+                      <input name="NAME_FIRST" type="text" class="form-control" id="inputName" placeholder="" value="<?php echo $records_by_member['name_first']; ?>">
                     </div>
                   </div>
                   
@@ -318,7 +318,7 @@ include('controller.php');
                     <label for="inputName" class="col-sm-2 control-label">Last Name</label>
 
                     <div class="col-sm-10">
-                      <input type="name_last" class="form-control" id="inputName" placeholder="" value="<?php echo $records_by_member['name_last']; ?>">
+                      <input name="NAME_LAST" type="text" class="form-control" id="inputName" placeholder="" value="<?php echo $records_by_member['name_last']; ?>">
                     </div>
                   </div>
 				  
@@ -326,28 +326,29 @@ include('controller.php');
                     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="">
+                      <input name="EMAIL" type="email" class="form-control" id="inputEmail" placeholder="" readonly="readonly" value="<?php echo $records_by_member['email']; ?>">
+					  <input name="x_HIDDEN_EMAIL" type="hidden" class="form-control" id="inputEmail" placeholder="" value="<?php echo $records_by_member['email']; ?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
 
                     <div class="col-sm-10">
-                      <input type="tel" class="form-control" id="inputPhone" placeholder="">
+                     
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
 
                     <div class="col-sm-10">
-                      <textarea class="form-control" id="inputExperience" placeholder=""></textarea>
+                      
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+                    
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputSkills" placeholder="">
+                      
                     </div>
                   </div>
                   <div class="form-group row">
@@ -361,7 +362,8 @@ include('controller.php');
                   </div>
                   <div class="form-group row">
                     <div class="ml-auto col-sm-10">
-                      <button type="submit" class="btn btn-success">Submit</button>
+                      <button name="update" class="btn btn-success btn-outline"> Save </button>
+					  <input name="MEMBER_ID" type="hidden" value="<?php echo $records_by_member['member_id']; ?>" />  
                     </div>
                   </div>
                 </form>

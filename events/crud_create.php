@@ -1,97 +1,123 @@
 <?php
-/* USERS.CRUD_CREATE */
+/* EVENTS_CREATE.VIEW */
 /*****************************************************************/
 include('../templates/admin_header.php');
 include('controller.php');
+/**
+  * @desc	all body content would go inside here
+  * @param	
+  * @return 
+*/
 ?>
+		<?php include('../templates/admin_nav.php'); ?>
 
-<?php include('../templates/admin_nav.php'); ?>
-<div id="page-wrapper">
-      
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Create User</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
-      
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <?php echo messages($message); ?>
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="table-responsive">
-   
-                <fieldset>  
+				 <!-- Content Wrapper. Contains page content -->
+		  <div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+			  <h1>Eents</h1>
+			</section>
 
-					<legend></legend>    
+			<!-- Main content -->
+			<section class="content">
+					
+			  <!-- Default box -->
+			  <div class="box">
+				
+				<?php echo messages($message); ?>
+				
+				<div class="box-body">
+					
+					<form name="manage" action="<?php echo current_page_Url(); ?>" method="post" role="form" enctype="multipart/form-data">                    
+                            
+						<div class="col-xs-4">
+							Title:<br />
+							<input name="TITLE" type="text" class="form-control" value="" />
+						</div>
 
-                        <form name="manage" action="<?php echo current_page_Url(); ?>" method="post" role="form">                    
-                            
-                            <div class="col-xs-4">
-                            	First Name:<br />
-                            	<input name="USER_NAME_FIRST" type="text" class="form-control" value="<?php echo $_SESSION['USER_NAME_FIRST']; ?>" />
-                            </div>
-                            
-                            <div class="col-xs-4">
-                            	Last Name:<br />
-                            	<input name="USER_NAME_LAST" type="text" class="form-control" value="<?php echo $_SESSION['USER_NAME_LAST']; ?>" />
-                            </div>
-                            
-                            <div class="col-xs-12">
-                            	&nbsp;
-                            </div>
-                            
-                            <div class="col-xs-4">
-                            	Email:<br />
-                            	<input name="USER_EMAIL" type="email" class="form-control" value="<?php echo $_SESSION['USER_EMAIL']; ?>" />
-                            </div>
-                            
-                            <div class="col-xs-4">
-                            	Password:<br />
-                            	<input name="USER_PASSWORD" type="password" class="form-control" value="<?php echo $_SESSION['USER_PASSSWORD']; ?>" />
-                            </div>
-                            
-                            <div class="col-xs-12">
-                            	&nbsp;
-                            </div>
-                            
-                            <div class="col-xs-4">
-                            	Role:<br />
-                            	<?php html_list_Roles($_SESSION['ROLE_ID'],'class="form-control"'); ?>
-                          	</div>
-                            
-                          	<div class="col-xs-8">
-                          		&nbsp;
-                          	</div>
+						<div class="col-xs-4">
+							Address:<br />
+							<input name="ADDRESS" type="text" class="form-control" value="" />
+						</div>
 
-                          	<div class="col-xs-4">
-								<input name="create" class="btn btn-success btn-outline" type="submit" value="create"> 
-                          		<input name="cancel" class="btn btn-danger btn-outline" type="submit" value="cancel">              
-                          	</div>
-                        </form>
+						<div class="col-xs-4">
+							City:<br />
+							<input name="CITY" type="text" class="form-control" value="" />
+						</div>
+						
+						<div class="col-xs-4">
+							State:<br />
+							<input name="STATE" type="text" class="form-control" value="" />
+						</div>
 
-                </fieldset> 
-        
-                    </div>
-                    <!-- /.table-responsive -->
-                   
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
-            
-</div>
+						<div class="col-xs-4">
+							Zip:<br />
+							<input name="ZIP" type="text" class="form-control" value="" />
+						</div>
+						
+						<div class="col-xs-12">
+							&nbsp;
+						</div>
 
+						<div class="col-xs-4">
+							Start Date:<br />
+							<input name="DATE_FROM" type="text" class="form-control" value="" />
+						</div>
+
+						<div class="col-xs-4">
+							End Date:<br />
+							<input name="DATE_To" type="text" class="form-control" value="" />
+						</div>
+
+						<div class="col-xs-4">
+							Link:<br />
+							<input name="IMAGE" type="text" class="form-control" value="" />
+						</div>
+
+						<div class="col-xs-4">
+							Image:<br />
+							<input name="LINK" type="text" class="form-control" value="" />
+						</div>
+						
+						<div class="col-xs-12">
+							&nbsp;
+						</div>
+
+						<div class="col-xs-8">
+							Short Intro:
+							<textarea name="DESCRIPTION_Short" class="form-control" rows=4"></textarea>
+						</div>
+						
+						<div class="col-xs-8">
+							Description:
+							<textarea name="DESCRIPTION_LONG" class="form-control" rows=8"></textarea>
+						</div>
+
+						<div class="col-xs-12">
+							&nbsp;
+						</div>
+
+						<div class="col-xs-4">
+							<input name="create" class="btn btn-success btn-outline" type="submit" value="Create">              
+						</div>
+						
+					</form>				
+					
+				</div>
+				<!-- /.box-body -->
+				<div class="box-footer">
+				  
+				</div>
+				<!-- /.box-footer-->
+			  </div>
+			  <!-- /.box -->
+
+			</section>
+			<!-- /.content -->
+		  </div>
+		  <!-- /.content-wrapper -->   
+    
 <?php
 /*****************************************************************/
 include('../templates/admin_footer.php');
-?>
+?>	
