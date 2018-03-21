@@ -37,6 +37,7 @@
 */
 	function is_logged_in_Security() 
 	{		
+
 		$inactive = LOGIN_TIMEOUT; // set timeout period in seconds (located in /_system/config.php)
 		
 		if(!isset($_SESSION['members.is_logged_in']))
@@ -159,22 +160,36 @@
 		return $output;
 	}
 
-	function cleanInput_Security($input,$extra_option=FALSE) {
+	function cleanInput_Security ( $input , $encrypt = FALSE , $replace_html = FALSE ) {
 	
-	  $search = array(
-		'@<script[^>]*?>.*?</script>@si',   // Strip out javascript
-		'@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
-		'@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
-		'@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
-	  );
-	
-		$output = preg_replace($search, '', $input);
-		$output = trim($output);			
-		$output = addslashes($output);
-		mysqli_real_escape_string($_SESSION['connection'], $output);
-		if($extra_option != FALSE and $extra_option = 'encrypt')
-		{
-			$output = encrypt_Security(trim($output),ENCRYPTION_KEY);
+		if ( $replace_html == FALSE ) {
+	  
+			$search = array(
+				'@<script[^>]*?>.*?</script>@si',   // Strip out javascript
+				'@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
+				'@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
+				'@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
+			);
+		
+		} else {
+		
+			$search = array(
+				'@<script[^>]*?>.*?</script>@si',   // Strip out javascript
+				'@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
+				'@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
+			);
+		
+		}
+		
+		$output = preg_replace ( $search , '', $input ) ;
+		$output = trim ( $output ) ;			
+		$output = addslashes ( $output ) ;
+		mysqli_real_escape_string( $_SESSION['connection'] , $output ) ;
+		
+		if ( $encrypt != FALSE ) {
+			
+			$output = encrypt_Security ( trim ( $output ) , ENCRYPTION_KEY ) ;
+		
 		}
 			
 		return $output;

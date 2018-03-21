@@ -10,7 +10,7 @@ $show_datatables = TRUE;
   * @param	
   * @return none
 */
-
+	is_logged_in_Security() ;
 	role_access_only_Security('1') ; // 1 = admin
 	
  /*****************************************************************/
@@ -100,7 +100,7 @@ $show_datatables = TRUE;
 		
 	}else{
 	
-		$records_all = read_Ads(FALSE,SITE_ID,FALSE );
+		$records_all = read_Ads(FALSE,$_SESSION['site_id'],FALSE );
 		$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
 	
 	}

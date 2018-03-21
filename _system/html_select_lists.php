@@ -45,7 +45,7 @@
 */
 	function html_list_Years_to_Present_HTML_Select_Lists($field_name='',$value=FALSE,$class='form-control')
 	{
-		$year_loop = SITE_YEAR_START; // SITE_YEAR_START from _system/config.php
+		$year_loop = $_SESSION['year_start']; // SITE_YEAR_START from _system/config.php
 		$year_current = date('Y');
 		
 		echo "<select name='$field_name' class='$class'>";

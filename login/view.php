@@ -40,7 +40,7 @@ include('controller.php');
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?php echo site_Url(); ?>"><b>Stuff</b> Admin</a>
+    <a href="<?php echo site_Url(); ?>"> <?php echo $read_values_Sites['display_name']; ?> </a><h6>powered by Thorium CMS</h6>
   </div>
 
   <!-- /.login-logo -->

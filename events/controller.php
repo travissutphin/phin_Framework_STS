@@ -2,8 +2,21 @@
 /* EVENTS.CONTROLLER */
 /*****************************************************************/
 
+// use datatables on the view page
+$show_datatables = TRUE;
+
 $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 
+/**
+  * @desc	only allow admin to access this section
+  * @param	
+  * @return none
+*/
+
+	role_access_only_Security('1') ; // 1 = admin
+	
+ /*****************************************************************/
+ 
 /**
   * @desc	start the create process
   * @param	$_POST
@@ -11,6 +24,7 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 */
 	if(isset($_POST['create']))
 	{
+	  $_POST['SITE_FK'] = $_SESSION['site_id'];
 	  $message = create_Events();
 	}
 /*****************************************************************/
@@ -49,7 +63,7 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 	}
 	else
 	{
-		$records_all = read_Events();
+		$records_all = read_Events(FALSE,$_SESSION['site_id']);
 		$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
 	}
 ?>

@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="<?php echo site_Url(); ?>assets/admin/images/favicon.ico">
 
-    <title>Stuff CMS</title>
+    <title>Thorium CMS</title>
   
 	<!-- Bootstrap 4.0-->
 	<link rel="stylesheet" href="<?php echo site_Url(); ?>assets/admin/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
@@ -42,6 +42,8 @@
     <!-- Logo -->
     <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
+	  <?php if(isset($display_values_active_site['display_name'])){ echo $display_values_active_site['display_name']; } ?>
+	  <?php /*
 	  <b class="logo-mini">
 		  <span class="light-logo"><img src="<?php echo site_Url(); ?>assets/admin/images/aries-light.png" alt="logo"></span>
 		  <span class="dark-logo"><img src="<?php echo site_Url(); ?>assets/admin/images/aries-dark.png" alt="logo"></span>
@@ -51,6 +53,7 @@
 		  <img src="<?php echo site_Url(); ?>assets/admin/images/logo-light-text.png" alt="logo" class="light-logo">
 	  	  <img src="<?php echo site_Url(); ?>assets/admin/images/logo-dark-text.png" alt="logo" class="dark-logo">
 	  </span>
+	  */ ?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

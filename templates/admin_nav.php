@@ -13,12 +13,14 @@
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
+		  <?php if(isset($_SESSION['site_id'])){ ?>
 		  <ul class="treeview-menu">
-            <li><a href="<?php echo site_Url(); ?>my_profile/view.php">"><i class="fa fa-user mr-5"></i>My Profile </a></li>
-			<li><a href="javascript:void()"><i class="fa fa-envelope-open mr-5"></i>Private Messages</a></li>
-			<li><a href="javascript:void()"><i class="fa fa-cog mr-5"></i>Account Setting</a></li>
+            <li><a href="<?php echo site_Url(); ?>my_profile/view.php"><i class="fa fa-user mr-5"></i>My Profile </a></li>
+			<li><a href="<?php echo site_Url(); ?>private_messages"><i class="fa fa-envelope-open mr-5"></i>Private Messages</a></li>
+			<li><a href="<?php echo site_Url(); ?>invoices"><i class="fa fa-cog mr-5"></i>Invoices</a></li>
 			<li><a href="<?php echo site_Url(); ?>login/view.php?logout"><i class="fa fa-power-off mr-5"></i>Logout</a></li>
           </ul>
+		  <?php } ?>
         </li>
 
 <!--- DASHBOARD --->
@@ -78,6 +80,36 @@
           </ul>
         </li>
 
+<!--- CLUBS --->
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Clubs</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+			<li><a href="<?php echo site_Url(); ?>clubs/crud_create.php"><i class="fa fa-circle-thin"></i>Add</a></li>
+            <li><a href="<?php echo site_Url(); ?>clubs/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
+          </ul>
+        </li>
+		
+<!--- CONTENT --->
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Content</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+			<li><a href="<?php echo site_Url(); ?>content/crud_create.php"><i class="fa fa-circle-thin"></i>Add</a></li>
+            <li><a href="<?php echo site_Url(); ?>content/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
+          </ul>
+        </li>
+		
 <!--- EVENTS --->
 		<li class="treeview">
           <a href="#">
@@ -90,6 +122,21 @@
           <ul class="treeview-menu">
 			<li><a href="<?php echo site_Url(); ?>events/crud_create.php"><i class="fa fa-circle-thin"></i>Add</a></li>
             <li><a href="<?php echo site_Url(); ?>events/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
+          </ul>
+        </li>
+
+<!--- MEMBERS--->
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Members</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+			<li><a href="<?php echo site_Url(); ?>members/crud_create.php"><i class="fa fa-circle-thin"></i>Add</a></li>
+            <li><a href="<?php echo site_Url(); ?>members/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
           </ul>
         </li>
 		
@@ -106,19 +153,19 @@
             <li><a href="<?php echo site_Url(); ?>stuff/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
           </ul>
         </li>
-		
-<!--- MEMBERS--->
+
+<!---TRAILS --->
 		<li class="treeview">
           <a href="#">
             <i class="fa fa-th"></i>
-            <span>Members</span>
+            <span>Trails</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-			<li><a href="<?php echo site_Url(); ?>members/crud_create.php"><i class="fa fa-circle-thin"></i>Add</a></li>
-            <li><a href="<?php echo site_Url(); ?>members/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
+			<li><a href="<?php echo site_Url(); ?>trails/crud_create.php"><i class="fa fa-circle-thin"></i>Add</a></li>
+            <li><a href="<?php echo site_Url(); ?>trails/view.php"><i class="fa fa-circle-thin"></i>View</a></li>
           </ul>
         </li>
 
@@ -126,7 +173,7 @@
 <!------------------------------------------->
 
 <!--- STUFF --->
-		<?php }elseif(isset($_SESSION['users.role_id']) and $_SESSION['users.role_id'] == '2'){ ?>
+		<?php }elseif(isset($_SESSION['members.role_id']) and $_SESSION['members.role_id'] == '2'){ ?>
 		
 		<li class="treeview">
           <a href="#">
@@ -147,9 +194,7 @@
       </ul>
     </section>
   </aside>
-
-
-
+  
 <?php /*
     <div id="wrapper">
 

@@ -63,7 +63,7 @@
 	  if($result === false) 
 	  { error_report_Helpers('Error - (html_list_Content_Layout)',$sql,$result); }
 	  
-	  echo '<select name="CON_LAYOUT_FK" "'.$values.'" class="form-control">';
+	  echo '<select name="CON_LAYOUT_FK" " " class="form-control">';
 	  while($data = $_SESSION['FETCH_ARRAY']($result))
 	  {
 		if($data['CONTENT_LAYOUT_ID'] == $content_layout_id){ $selected="selected"; }else{ $selected=""; }

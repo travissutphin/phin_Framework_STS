@@ -52,12 +52,12 @@ include('controller.php');
 
 						<div class="col-xs-4">
 							Model:<br />
-							<?php html_list_Models($id=$row['MODEL_FK'],$site_fk=SITE_ID, $field_name='MODEL_FK', $class='form-control'); ?>
+							<?php html_list_Models($id=$row['MODEL_FK'],$site_fk=$_SESSION['site_id'], $field_name='MODEL_FK', $class='form-control'); ?>
 						</div>
 
 						<div class="col-xs-4">
 							Category:<br />
-							<?php html_list_Categories($id=$row['CATEGORY_FK'],$site_fk=SITE_ID,$field_name='CATEGORY_FK',$class='form-control'); ?>
+							<?php html_list_Categories($id=$row['CATEGORY_FK'],$site_fk=$_SESSION['site_id'],$field_name='CATEGORY_FK',$class='form-control'); ?>
 						</div>
 
 						<div class="col-xs-4">
@@ -101,6 +101,7 @@ include('controller.php');
 					<?php } ?>
 					
 				</div>
+
 				<!-- /.box-body -->
 				<div class="box-footer">
 				  

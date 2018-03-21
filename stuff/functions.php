@@ -13,8 +13,8 @@
 		$_POST['CREATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
 	
 		// set the SITE_ID
-		$_POST['SITE_FK'] = SITE_ID;
-		$_POST['USER_FK'] = $_SESSION['users.id'];
+		$_POST['SITE_FK'] = $_SESSION['site_id'];
+		$_POST['MEMBER_FK'] = $_SESSION['users.id'];
 		
 		//** Do not add trailing / to $move_to
 
@@ -78,7 +78,7 @@
   * @param	$id
   * @return complete query structure
 */
-	function read_Stuff($id=FALSE,$site_fk=FALSE,$user_fk=FALSE,$category_fk=FALSE,$year_start_dk=FALSE,$year_end_dk=FALSE,$status_dk=FALSE)
+	function read_Stuff($id=FALSE,$site_fk=FALSE,$member_fk=FALSE,$category_fk=FALSE,$year_start_dk=FALSE,$year_end_dk=FALSE,$status_dk=FALSE,$alias=FALSE)
 	{
 	  $sql = ' SELECT '.COLUMNS_STUFF.' FROM STUFF stuff ';
 	  $sql.= ' WHERE 0=0 ';
@@ -91,9 +91,9 @@
 	  if($site_fk !== FALSE)
 	  {	$sql.= " AND stuff.SITE_FK = '$site_fk' "; }
 	  
-	  // by user_fk
-	  if($user_fk !== FALSE)
-	  {	$sql.= " AND stuff.USER_FK = '$user_fk' "; }
+	  // by member_fk
+	  if($member_fk !== FALSE)
+	  {	$sql.= " AND stuff.MEMBER_FK = '$member_fk' "; }
 
 	  // by category_fk
 	  if($category_fk !== FALSE)
@@ -110,11 +110,15 @@
 	  // by status_dk ( "dynamic key" build in _system/html_select_lists.php)
 	  if($status_dk !== FALSE)
 	  {	$sql.= " AND stuff.YEAR_DK = '$year_dk' "; }
+
+	  // by status_dk ( "dynamic key" build in _system/html_select_lists.php)
+	  if($alias !== FALSE)
+	  {	$sql.= " AND stuff.alias = '$alias' "; }
 	  
 	  $sql.= ' AND stuff.DELETED_AT IS NULL ';
 	  
-	  $sql.= ' ORDER BY stuff.CREATED_AT ';
-	  
+	  $sql.= ' ORDER BY stuff.CREATED_AT DESC ';
+
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
 	  if($result === false) 

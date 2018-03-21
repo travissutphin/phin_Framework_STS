@@ -48,4 +48,9 @@
 	}
 /*****************************************************************/
 
+// get site for member based on the url the member is on
+		$this_url = $_SERVER['HTTP_HOST'];
+		$read_values_Sites = read_values_Sites(FALSE,$this_url);		
+		$_SESSION['site_id'] = $read_values_Sites['site_id'];
+
 ?>

@@ -11,12 +11,12 @@
 */
 	date_default_timezone_set('US/Eastern');
 	define("DB_TYPE","MYSQL");// MYSQL or MSSQL
-	define("DB_SERVER","127.0.0.1");
+	define("DB_SERVER","localhost");
 	define("DB_DATABASE","phin_framework_sts");
 	define("DB_USER","root");
 	define("DB_PASSWORD", "");
 	define("APP_DIRECTORY", "/phin_Framework_STS/"); // should be "/" if app is on the root
-	define("LOGIN_TIMEOUT", "720");	
+	define("LOGIN_TIMEOUT", "7200");	
 	
 	// NEEDS TO BE DYNAMIC ONCE MORE THAN 1 SITE IS INCORPORATED
 	define("EMAIL_GENERAL_REPLY_ADDRESS","@jeep-stuff.com");
@@ -29,7 +29,7 @@
   * @param	
   * @return 
 */
-	$_SESSION['ignore'] = array("create", "update", "delete", "multiselect", "CONTENT_ID", "CONTENT_TYPE_ID", "EVENT_ID", "MEMBER_ID", "ROLE_ID", "STUFF_ID", "STUFF_IMAGE_ID", "STUFF_MEMBERSHIP_LEVEL_ID", "STUFF_ABUSE_REPORTED_ID", "STUFF_ACTIVITY_TRACKING_ID", "CATEGORY_ID", "MAKE_ID", "MODEL_ID", "SITE_ID", "ADVERTISER_ID", "AD_ID", "IP_TRACKING_ID", "EVENT_ID", "GALLERY_ID", "GALLERY_IMAGE_ID", "");
+	$_SESSION['ignore'] = array( "create" , "update" , "delete" , "multiselect" ,  "AD_ID" , "ADVERTISER_ID" , "CATEGORY_ID" , "CLUBS", "CONTENT_ID", "CONTENT_TYPE_ID", "CONTENT_LAYOUT_ID", "CONTENT_TEMPLATE_ID", "EVENT_ID" , "GALLERY_ID" , "GALLERY_IMAGE_ID" , "INVOICE_ID" , "IP_TRACKING_ID" , "MAKE_ID", "MEMBER_ID" , "MODEL_ID" , "PRIVATE_MESSAGE_ID" , "ROLE_ID", "SITE_ID" , "STUFF_ID", "STUFF_IMAGE_ID", "STUFF_MEMBERSHIP_LEVEL_ID", "STUFF_ABUSE_REPORTED_ID", "STUFF_ACTIVITY_TRACKING_ID", "TRAIL_ID" ) ;
 	
 /*****************************************************************/	
 
@@ -69,12 +69,18 @@
 	// manage in admin pages ( has crud in admin)
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."ads\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."advertisers\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."clubs\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."content\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."content_types\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."content_layouts\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."content_templates\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."events\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."invoices\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."login\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."members\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."private_messages\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."stuff\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."trails\\functions.php");
 	
 /*****************************************************************/
   
@@ -113,27 +119,12 @@
   *			within the tbl_users table
   * @creats	define("COLUMNS_system_tbl_roles" ,"roles.ID, roles.NAME, roles.CREATED_AT, roles.UPDATED_AT, roles.DELETED_AT") 
 */ 
-	$table_x_alias = array("ADS"=>"ad","ADVERTISERS"=>"adv","CATEGORIES"=>"cat","CONTENT"=>"con", "CONTENT_TYPES"=>"ct", "EVENTS"=>"ev",  "MODELS"=>"model", "ROLES"=>"roles", "SITES"=>"sites", "STUFF"=>"stuff", "MEMBERS"=>"mem");	
+	$table_x_alias = array("ADS"=>"ad","ADVERTISERS"=>"adv","CATEGORIES"=>"cat","CLUBS"=>"club","CONTENT"=>"con","CONTENT_TYPES"=>"ct","CONTENT_LAYOUTS"=>"cl","CONTENT_TEMPLATES"=>"ct","EVENTS"=>"ev","INVOICES"=>"inv","MEMBERS"=>"mem","MODELS"=>"model","PRIVATE_MESSAGES"=>"pm","ROLES"=>"roles","SITES"=>"sites","STUFF"=>"stuff","TRAILS"=>"trail" );
 							
 	foreach($table_x_alias as $table => $alias)
 	{	
 		table_fields_Database($table,$alias);
 	}
-/*****************************************************************/
-
-
-/**
-  * @desc
-  * @param	
-  * @return 
-*/
-	$this_url = $_SERVER['HTTP_HOST'];
-	$read_values_Sites = read_values_Sites(FALSE, $this_url);
-	// we can use the following to get site details
-	define("SITE_ID", $read_values_Sites['site_id']);
-	define("SITE", $read_values_Sites['year_start']);
-	define("SITE_YEAR_START", $read_values_Sites['year_start']);
-	define("SITE_DISPLAY_NAME", $read_values_Sites['display_name']);
 /*****************************************************************/
 
 

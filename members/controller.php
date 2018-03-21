@@ -8,6 +8,16 @@ $show_datatables = TRUE;
 $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 
 /**
+  * @desc	only allow admin to access this section
+  * @param	
+  * @return none
+*/
+
+	role_access_only_Security('1') ; // 1 = admin
+	
+ /*****************************************************************/
+ 
+/**
   * @desc	start the create process
   * @param	$_POST
   * @return none - redirect is done within the function

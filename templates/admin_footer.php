@@ -232,5 +232,47 @@
 		<script src="<?php echo site_Url(); ?>assets/admin/ser/js/pages/data-table.js"></script>
 	<?php } ?>
 
+	<?php if ( isset ( $include_print_area ) and $include_print_area = TRUE ) { ?>
+		<!-- JqueryPrintArea -->
+		<script src="<?php echo site_Url(); ?>assets/admin/assets/vendor_plugins/JqueryPrintArea/demo/jquery.PrintArea.js"></script>
+		
+		<script>
+		$(document).ready(function() {
+			$("#print").click(function() {
+				var mode = 'iframe'; //popup
+				var close = mode == "popup";
+				var options = {
+					mode: mode,
+					popClose: close
+				};
+				$("section.printableArea").printArea(options);
+			});
+		});
+		</script>
+	<?php } ?>
+	
+	<script>
+	 // chat app scrolling
+	  $('#chat-app').slimScroll({
+		height: '600'
+	  });
+	</script>
+
+	<!-- page script -->
+	<script type="text/javascript">
+	  // To make Pace works on Ajax calls
+	  $(document).ajaxStart(function () {
+		Pace.restart()
+	  })
+	  $('.ajax').click(function () {
+		$.ajax({
+		  url: '#', success: function (result) {
+			$('.ajax-content').html('<hr>Ajax Request Completed !')
+		  }
+		})
+	  })
+	</script>
+
+	
 </body>
 </html>

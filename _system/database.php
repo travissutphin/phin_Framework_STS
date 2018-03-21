@@ -41,8 +41,8 @@
   * @param	$table to get fields from / $alias to use for each table
   * @return define() with table name and all fields
 */
-	function table_fields_Database($table,$alias)
-	{
+	function table_fields_Database( $table,$alias ) {
+		
 		// NEED TO ADD MSSQL version
 		// SELECT *
 		// FROM Northwind.INFORMATION_SCHEMA.COLUMNS
@@ -53,29 +53,74 @@
 		
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 		
-		if (!$result) 
-		{
+		if ( !$result ) {
+			
 			echo 'Could not run query: ' . $_SESSION['QUERY_ERROR']();
 			exit;
+		
 		}
+		
 		if ($_SESSION['NUM_ROWS']($result) > 0) {
 			
-			while ($row = $_SESSION['FETCH_ARRAY']($result)) 
-			{
-				foreach($row as $key => $value)
-				{
-					if($key == 'FIELD') // "FIELD" value holds the value we need
-					{
+			while ( $row = $_SESSION['FETCH_ARRAY']( $result ) ) {
+				
+				foreach( $row as $key => $value ) {
+				
+					if ( $key == 'FIELD' ) { // "FIELD" value holds the value we need 
+						
 						$build_column.= $alias.'.'.$value.', '; // concat the alias with the field name
+					
 					}
+				
 				}
+			
 			}
+			
 			$build_column = rtrim($build_column, ', ');// remove comma from end of string 
 			$column_name = "COLUMNS_".strtoupper($table); // this will be the NAME of the define function
 			define($column_name,$build_column);	// build the define() function
 			$build_column = ""; // clear the columns for the next table
+		
 		}	
+	
 	}
 /*****************************************************************/
 
+
+/**
+  * @desc	get field data type 
+  * @param	$table to get fields from / $field to get properties of the field
+  * @return the following values  Field   Type    Null    Key     Default     Extra 
+*/
+	function table_field_data_types_Database( $table,$field, $return_field ) {
+		
+		$sql = " SHOW FIELDS FROM $table where Field = '$field' ";
+		
+		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+		
+		if ( !$result ) {
+			
+			echo 'Could not run query: ' . $_SESSION['QUERY_ERROR']();
+			exit;
+		
+		}
+		
+		while ( $row = $_SESSION['FETCH_ARRAY']( $result ) ) {
+			
+			foreach( $row as $key => $value ) {
+
+				if ( $return_field == $key ) { // "FIELD" value holds the value we need 
+					
+					$return = $value;
+				
+				}
+			
+			}
+		
+		}
+		
+		return $return;
+	
+	}
+/*****************************************************************/
 ?>

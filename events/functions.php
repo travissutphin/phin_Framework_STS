@@ -10,7 +10,7 @@
 	function create_Events()
 	{	  		
 		// set needed variables
-		$createdAt = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
+		$_POST['CREATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
 				  
 			$data_columns = "";
 			$data_values = "";
@@ -64,10 +64,11 @@
 	function read_Events($id=FALSE,$site_fk=FALSE,$address=FALSE,$city=FALSE,$state=FALSE,$zip=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_EVENTS.' FROM EVENTS ev ';
+		$sql.= ' WHERE 0=0 ';
 
 		// by id
 		if($id !== FALSE)
-		{	$sql.= " AND ev.EVENTS_ID = '$id' "; }
+		{	$sql.= " AND ev.EVENT_ID = '$id' "; }
 
 		// by site_fk
 		if($site_fk !== FALSE)
@@ -88,7 +89,9 @@
 		// by zip
 		if($zip !== FALSE)
 		{	$sql.= " AND ev.ZIP = '$zip' "; }
-
+		
+		$sql.= ' AND ev.DELETED_AT IS NULL ';
+		
 		$sql.= ' ORDER BY ev.DATE_FROM ';
 
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
@@ -110,10 +113,10 @@
 	function read_values_Events($id=FALSE,$site_fk=FALSE,$address=FALSE,$city=FALSE,$state=FALSE,$zip=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_EVENTS.' FROM EVENTS ev ';
-
+		$sql.= ' WHERE 0=0 ';
 		// by id
 		if($id !== FALSE)
-		{	$sql.= " AND ev.EVENTS_ID = '$id' "; }
+		{	$sql.= " AND ev.EVENT_ID = '$id' "; }
 
 		// by site_fk
 		if($site_fk !== FALSE)
@@ -135,6 +138,8 @@
 		if($zip !== FALSE)
 		{	$sql.= " AND ev.ZIP = '$zip' "; }
 
+		$sql.= ' AND ev.DELETED_AT IS NULL ';
+		
 		$sql.= ' ORDER BY ev.DATE_FROM ';
 
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
@@ -164,7 +169,12 @@
 */
 	function update_Events()
 	{	  	
+			$_POST['UPDATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
+			
 			$data_update = "";
+			
+			$message = 'updated';	
+			
 			foreach ($_POST as $key => $value) 
 			{
 				// x_ = add to posted vars you don't want included here that are not listed in $_SESSION['ignore']

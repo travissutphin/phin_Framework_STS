@@ -99,10 +99,13 @@
 	   unset($_SESSION['members.name_last']) ;
 	   unset($_SESSION['members.role_id']) ;
 	   unset($_SESSION['members.login_attempts']) ;
+	   unset($_SESSION['members.role']) ;
 	   unset($_SESSION['site_id']);
 	   unset($_SESSION);
+	   
+	   session_destroy();
 		
-	  header( 'Location: '.site_Url() ) ; 	
+	  header( 'Location: '.site_Url().'login/view.php?message=logout' ) ; 	
 	  exit;
 	}
 /*****************************************************************/

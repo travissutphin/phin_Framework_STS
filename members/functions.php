@@ -98,26 +98,27 @@
 */
 	function read_Members($id=FALSE,$email=FALSE)
 	{
-	  $sql = ' SELECT '.COLUMNS_MEMBERS.', '.COLUMNS_ROLES.' FROM MEMBERS mem ';
-	  $sql.= ' JOIN ROLES roles ON mem.ROLE_FK = roles.ROLE_ID ';	
+		$sql = ' SELECT '.COLUMNS_MEMBERS.', '.COLUMNS_ROLES.' FROM MEMBERS mem ';
+		$sql.= ' JOIN ROLES roles ON mem.ROLE_FK = roles.ROLE_ID ';	
 
-	  // id
-	  if($id !== FALSE)
-	  {	$sql.= " AND mem.MEMBER_ID = '$id' "; }
-	  
-	  // by email
-	  if($email !== FALSE)
-	  {	$sql.= " AND mem.EMAIL = '$email' "; }
-	  
-	  $sql.= " AND DELETED_AT IS NULL ";
-	  $sql.= ' ORDER BY mem.NAME_LAST, mem.NAME_FIRST ';
+		// id
+		if($id !== FALSE)
+		{	$sql.= " AND mem.MEMBER_ID = '$id' "; }
 
-	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+		// by email
+		if($email !== FALSE)
+		{	$sql.= " AND mem.EMAIL = '$email' "; }
 
-	  if($result === false) 
-	  { error_report_Helpers('Error Reading members - (read_Members)',$sql); }
-	  
-	  return $result;
+		$sql.= " AND DELETED_AT IS NULL ";
+
+		$sql.= ' ORDER BY mem.NAME_LAST, mem.NAME_FIRST ';
+
+		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+
+		if($result === false) 
+		{ error_report_Helpers('Error Reading members - (read_Members)',$sql); }
+
+		return $result;
 	}
 /*****************************************************************/
 

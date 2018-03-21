@@ -9,7 +9,7 @@
   * @param	$id
   * @return 
 */
-	function read_values_Content_Templates($id=FALSE,$organization_id=FALSE)
+	function read_values_Content_Templates($id=FALSE,$site_id=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_CONTENT_TEMPLATES.' FROM content_templates ct ';		
 		$sql.= " WHERE 0=0 ";
@@ -18,8 +18,8 @@
 			$sql.= " AND ct.CONTENT_TEMPLATE_ID = '$id' ";
 		}
 
-		if($organization_id != FALSE){
-			$sql.= " AND ct.SITE_FK = '$organization_id' ";
+		if($site_id != FALSE){
+			$sql.= " AND ct.SITE_FK = '$site_id' ";
 		}	
 
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);

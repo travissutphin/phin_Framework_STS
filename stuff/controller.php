@@ -2,6 +2,14 @@
 /* STUFF.CONTROLLER */
 /*****************************************************************/
 
+/**
+  * @desc	only allow admin to access this section
+  * @param	
+  * @return none
+*/
+	
+	is_logged_in_Security() ;
+
 // use datatables on the view page
 $show_datatables = TRUE;
 
@@ -52,15 +60,16 @@ $message = isset($_REQUEST['message']) ? $_REQUEST['message'] : false;
 	}
 	else
 	{
+		// if this is a member we will show only the members stuff for current site
+		if(isset($_SESSION['site_id']) and isset($_SESSION['members.role_id']) and $_SESSION['members.role_id'] == '2'){
 		
-		if(isset($_SESSION['site_id'])){
-		
-			$records_all = read_Stuff(FALSE,$_SESSION['site_id']);
+			$records_all = read_Stuff(FALSE,$_SESSION['site_id'], $_SESSION['members.id']);
 			$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
 		
-		}else{
+		// if this is the admin, we will show all stuff for current site
+		}elseif(isset($_SESSION['members.role_id']) and $_SESSION['members.role_id'] == '1'){
 		
-			$records_all = read_Stuff(FALSE,FALSE,$_SESSION['users.id'],FALSE,FALSE,FALSE,FALSE);
+			$records_all = read_Stuff(FALSE,$_SESSION['site_id']);
 			$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
 		
 		}

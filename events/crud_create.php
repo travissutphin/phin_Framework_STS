@@ -15,7 +15,7 @@ include('controller.php');
 		  <div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			  <h1>Eents</h1>
+			  <h1>Events</h1>
 			</section>
 
 			<!-- Main content -->
@@ -27,7 +27,7 @@ include('controller.php');
 				<?php echo messages($message); ?>
 				
 				<div class="box-body">
-					
+									
 					<form name="manage" action="<?php echo current_page_Url(); ?>" method="post" role="form" enctype="multipart/form-data">                    
                             
 						<div class="col-xs-4">

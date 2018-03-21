@@ -1,5 +1,5 @@
 <?php
-/* ADS.FUNCTIONS */
+/* MY_PROFILE.FUNCTIONS */
 /*****************************************************************/
 
 /** 
@@ -7,7 +7,7 @@
   * @param	
   * @return none
 */
-	function create_Ads()
+	function create_My_Profile()
 	{	  		
 		// set needed variables
 		$_POST['CREATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
@@ -53,7 +53,7 @@
   * @param	$id
   * @return complete query structure
 */
-	function read_Ads($id=FALSE,$site_fk=FALSE,$advertiser_fk=FALSE)
+	function read_My_Profile($id=FALSE,$site_fk=FALSE,$advertiser_fk=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_ADS.', '.COLUMNS_ADVERTISERS.' FROM ADS ad ';
 		$sql.= ' JOIN ADVERTISERS adv ON adv.ADVERTISER_ID = ad.ADVERTISER_FK  ';
@@ -93,7 +93,7 @@
   *	@ex.	$values_users = read_values_Ad($id='1');
   *			echo $values_users['id']; // id would be lowercase
 */
-	function read_values_Ads($id=FALSE,$site_fk=FALSE,$advertiser_fk=FALSE)
+	function read_values_My_Profile($id=FALSE,$site_fk=FALSE,$advertiser_fk=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_ADS.' FROM ADS ad ';
 		$sql.= ' WHERE 0=0 ';
@@ -137,7 +137,7 @@
   * @param	$id (specific record)
   * @return none
 */
-	function update_Ads()
+	function update_My_Profile()
 	{	  	
 			$_POST['UPDATED_AT'] = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
 			$data_update = "";
@@ -175,7 +175,7 @@
   * @param	$id
   * @return none
 */
-	function delete_Ads( $id=FALSE )
+	function delete_My_Profile( $id=FALSE )
 	{
 	  $deletedAt = format_Dates_Times(date('Y-m-d H:i:s'),'database_table');
 	  $message = 'not_able_to_delete';
@@ -205,7 +205,7 @@
   * @param	$id(selected record) - $value(class, id, etc)
   * @return none - echo out list
 */
-	function html_list_Ads($id=FALSE,$site_fk=FALSE,$advertiser_fk=FALSE)
+	function html_list_My_Profile($id=FALSE,$site_fk=FALSE,$advertiser_fk=FALSE)
 	{
 	
 		// removed, not sure how/why/if we need this.
@@ -218,7 +218,7 @@
   * @param	$id(selected record) - $value(class, id, etc)
   * @return none - echo out list
 */
-	function display_Ads($id=FALSE,$site_fk=FALSE,$advertiser_fk=FALSE)
+	function display_My_Profile($id=FALSE,$site_fk=FALSE,$advertiser_fk=FALSE)
 	{
 	
 		// need to create this based on details decided on how they will be displayed.

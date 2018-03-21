@@ -33,7 +33,7 @@ $show_datatables = TRUE;
 */
 	if(isset($_POST['create']))
 	{
-		$_POST['SITE_FK'] = SITE_ID;
+		$_POST['SITE_FK'] = $_SESSION['site_id'];
 		$message = create_Advertisers();
 	}
 /*****************************************************************/
@@ -81,11 +81,11 @@ $show_datatables = TRUE;
 */
 	if(isset($_REQUEST['ADVERTISER_ID']))
 	{
-		$record_by_id= read_Advertisers($_REQUEST['ADVERTISER_ID'], SITE_ID);
+		$record_by_id= read_Advertisers($_REQUEST['ADVERTISER_ID'], $_SESSION['site_id']);
 	}
 	else
 	{
-		$records_all = read_Advertisers(FALSE,SITE_ID);
+		$records_all = read_Advertisers(FALSE,$_SESSION['site_id']);
 		$records_all_num_rows = $_SESSION['NUM_ROWS']($records_all);	
 	}
 ?>

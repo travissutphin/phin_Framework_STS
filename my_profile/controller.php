@@ -1,5 +1,5 @@
 <?php
-/* ADS.CONTROLLER */
+/* MY_PROFILE.CONTROLLER */
 /*****************************************************************/
 
 /**
@@ -8,7 +8,7 @@
   * @return none
 */
 
-	role_access_only_Security('1') ; // 1 = admin
+	//role_access_only_Security('1') ; // 1 = admin
 	
  /*****************************************************************/
  

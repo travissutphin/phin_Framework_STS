@@ -62,7 +62,7 @@
 		{ $sql.= " AND sites.SITE = '$site' "; }  
 		
 		$sql.= ' ORDER BY sites.SITE_ID ';
-		
+
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 			
 		// error reporting 
