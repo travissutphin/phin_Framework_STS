@@ -61,14 +61,11 @@
 		{ $sql.= " AND ge.GE_CITY = '$city' "; }
 
 		if($zipcode != NULL)
-		{ $sql.= " AND ge.GE_ZIPECODE = '$zipcode' "; }
-
-		$sql.= " AND ge.DELETED_AT IS NULL ";
+		{ $sql.= " AND ge.GE_ZIPECODE = '$zipcode' "; }
 		$sql.= " AND ge.GE_COUNTRY = 'USA' ";
 		
 		if($order_by != NULL)
-		{ $sql.= " ORDER BY '$order_by' "; }
-		
+		{ $sql.= " ORDER BY '$order_by' "; }				$sql.= " LIMIT 0,50 ";		
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 		
 		// error reporting 
@@ -108,8 +105,7 @@
 		$sql.= " AND ge.DELETED_AT IS NULL ";
 		$sql.= " AND ge.GE_COUNTRY = 'USA' ";
 		
-		if($order_by != NULL)
-		{ $sql.= " ORDER BY '$order_by' "; }
+		$sql.= " ORDER BY ge.GE_ZIPECODE ";
 		
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 		
@@ -284,9 +280,9 @@
 	function html_list_Zip_Code_Geolocator($id=FALSE,$values=FALSE,$state=FALSE,$city=FALSE,$select_form_name=FALSE)
 	{
 	  $sql = ' SELECT DISTINCT(GE_ZIPCODE) FROM geolocator ge ';
-	  //$sql.= " WHERE ge.GE_STATE = '$state' ";
-	  $sql.= " WHERE ge.GE_CITY = '$city' ";
-	  $sql.= " AND ge.GE_COUNTRY = 'USA' ";
+	  //$sql.= " WHERE ge.GE_STATE = '$state' ";	
+	 // $sql.= " WHERE ge.GE_CITY = '$city' ";
+	 // $sql.= " AND ge.GE_COUNTRY = 'USA' ";
 	  $sql.= ' ORDER BY ge.GE_ZIPCODE ';
 	  
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);

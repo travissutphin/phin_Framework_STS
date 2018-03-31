@@ -34,7 +34,7 @@
 	<![endif]-->
 
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-blue-light sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 

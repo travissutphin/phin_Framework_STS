@@ -11,11 +11,11 @@
 */
 	date_default_timezone_set('US/Eastern');
 	define("DB_TYPE","MYSQL");// MYSQL or MSSQL
-	define("DB_SERVER","localhost");
-	define("DB_DATABASE","phin_framework_sts");
-	define("DB_USER","root");
-	define("DB_PASSWORD", "");
-	define("APP_DIRECTORY", "/phin_Framework_STS/"); // should be "/" if app is on the root
+	define("DB_SERVER","mysql1-p2.ezhostingserver.com");
+	define("DB_DATABASE","dev4jeepsonly");
+	define("DB_USER","admin");
+	define("DB_PASSWORD", "Pirate$33");
+	define("APP_DIRECTORY", "/"); // should be "/" if app is on the root
 	define("LOGIN_TIMEOUT", "7200");	
 	
 	// NEEDS TO BE DYNAMIC ONCE MORE THAN 1 SITE IS INCORPORATED
@@ -75,6 +75,7 @@
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."content_layouts\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."content_templates\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."events\\functions.php");
+	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."geolocator\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."invoices\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."login\\functions.php");
 	include_once($_SERVER['DOCUMENT_ROOT']."".APP_DIRECTORY."members\\functions.php");
@@ -119,7 +120,7 @@
   *			within the tbl_users table
   * @creats	define("COLUMNS_system_tbl_roles" ,"roles.ID, roles.NAME, roles.CREATED_AT, roles.UPDATED_AT, roles.DELETED_AT") 
 */ 
-	$table_x_alias = array("ADS"=>"ad","ADVERTISERS"=>"adv","CATEGORIES"=>"cat","CLUBS"=>"club","CONTENT"=>"con","CONTENT_TYPES"=>"ct","CONTENT_LAYOUTS"=>"cl","CONTENT_TEMPLATES"=>"ct","EVENTS"=>"ev","INVOICES"=>"inv","MEMBERS"=>"mem","MODELS"=>"model","PRIVATE_MESSAGES"=>"pm","ROLES"=>"roles","SITES"=>"sites","STUFF"=>"stuff","TRAILS"=>"trail" );
+	$table_x_alias = array("ADS"=>"ad","ADVERTISERS"=>"adv","CATEGORIES"=>"cat","CLUBS"=>"club","CONTENT"=>"con","CONTENT_TYPES"=>"ct","CONTENT_LAYOUTS"=>"cl","CONTENT_TEMPLATES"=>"ct","EVENTS"=>"ev","GEOLOCATOR"=>"ge","INVOICES"=>"inv","MEMBERS"=>"mem","MODELS"=>"model","PRIVATE_MESSAGES"=>"pm","ROLES"=>"roles","SITES"=>"sites","STUFF"=>"stuff","TRAILS"=>"trail" );
 							
 	foreach($table_x_alias as $table => $alias)
 	{	

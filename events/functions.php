@@ -61,7 +61,7 @@
   * @param	$id
   * @return complete query structure
 */
-	function read_Events($id=FALSE,$site_fk=FALSE,$address=FALSE,$city=FALSE,$state=FALSE,$zip=FALSE)
+	function read_Events($id=FALSE,$site_fk=FALSE,$address=FALSE,$city=FALSE,$state=FALSE,$zip=FALSE,$search=FALSE )
 	{
 		$sql = ' SELECT '.COLUMNS_EVENTS.' FROM EVENTS ev ';
 		$sql.= ' WHERE 0=0 ';
@@ -90,10 +90,14 @@
 		if($zip !== FALSE)
 		{	$sql.= " AND ev.ZIP = '$zip' "; }
 		
+		// search
+		if ( $search !== FALSE )
+		{ $sql.= " AND ev.TITLE LIKE '%$search%' " ; }
+		
 		$sql.= ' AND ev.DELETED_AT IS NULL ';
 		
 		$sql.= ' ORDER BY ev.DATE_FROM ';
-
+		
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
 		if($result === false) 

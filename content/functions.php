@@ -65,7 +65,7 @@
   * @return complete query structure
 */
 	function read_Content( $id=FALSE,$alias=FALSE,$site_id=FALSE,$con_parent_id=FALSE,$num_rows=FALSE,$sub_nav=FALSE,$access_to=FALSE ) {
-				$sql = ' SELECT '.COLUMNS_CONTENT.' FROM content con ';		$sql.= " WHERE 0=0 ";		// by id		if ( $id !== FALSE ) {				$sql.= " AND con.CONTENT_ID = '$id' " ;		}		// by alias		if($alias !== FALSE)		{ $sql.= " AND con.CON_ALIAS = '$alias' "; }		// by site		if($site_id !== FALSE)		{ $sql.= " AND con.SITE_FK = '$site_id' "; }				// by type		if($con_parent_id !== FALSE)		{ $sql.= " AND con.CON_PARENT_ID = '$con_parent_id' "; }		// show sub nav		if($sub_nav !== FALSE)		{ $sql.= " AND con.CON_PARENT_ID != '0' "; }				$sql.= " AND con.DELETED_AT IS NULL ";		$sql.= ' ORDER BY con.CON_SEQUENCE ASC ';				$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
+				$sql = ' SELECT '.COLUMNS_CONTENT.' FROM content con ';		$sql.= " WHERE 0=0 ";		// by id		if ( $id !== FALSE ) {				$sql.= " AND con.CONTENT_ID = '$id' " ;		}		// by alias		if($alias !== FALSE)		{ $sql.= " AND con.CON_ALIAS = '$alias' "; }		// by site		if($site_id !== FALSE)		{ $sql.= " AND con.SITE_FK = '$site_id' "; }				// by type		if($con_parent_id !== FALSE)		{ $sql.= " AND con.CON_PARENT_ID = '$con_parent_id' "; }		// show sub nav		if($sub_nav !== FALSE)		{ $sql.= " AND con.CON_PARENT_ID != '0' "; }				$sql.= " AND con.DELETED_AT IS NULL ";		$sql.= ' ORDER BY con.CON_SEQUENCE ASC ';		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 		if($result === false) 
 		{ error_report_Helpers('Error Reading Page - (read_Content)',$sql,$result); }
 		return $result;

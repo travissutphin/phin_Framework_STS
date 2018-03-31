@@ -48,7 +48,10 @@
 		{
 		  $result = date('Y-m-d H:i:s', strtotime($date));
 		}
-				
+		elseif($format == "date_only") // returns ex. 2025-01-31 22:01:03
+		{
+		  $result = date('Y-m-d', strtotime($date));
+		}		
 		return $result;
 	}
 /*****************************************************************/

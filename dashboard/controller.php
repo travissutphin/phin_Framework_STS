@@ -42,6 +42,7 @@
   * @return 
 */
 	//$records_all = read_Dashboard();
+	$display_sites = read_Sites( $id=FALSE ) ; 
 /*****************************************************************/
 
 ?>

@@ -61,7 +61,7 @@
   * @param	$id
   * @return complete query structure
 */
-	function read_Trails($id=FALSE,$site_fk=FALSE,$address=FALSE,$city=FALSE,$state=FALSE,$zip=FALSE)
+	function read_Trails($id=FALSE,$site_fk=FALSE,$address=FALSE,$city=FALSE,$state=FALSE,$zip=FALSE,$search=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_TRAILS.' FROM TRAILS trail ';
 		$sql.= ' WHERE 0=0 ';
@@ -89,6 +89,10 @@
 		// by zip
 		if($zip !== FALSE)
 		{	$sql.= " AND trail.ZIP = '$zip' "; }
+
+		// search
+		if ( $search !== FALSE )
+		{ $sql.= " AND trail.TITLE LIKE '%$search%' " ; }
 		
 		$sql.= ' AND trail.DELETED_AT IS NULL ';
 		

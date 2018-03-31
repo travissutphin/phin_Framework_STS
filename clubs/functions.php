@@ -61,7 +61,7 @@
   * @param	$id
   * @return complete query structure
 */
-	function read_Clubs($id=FALSE,$site_fk=FALSE,$address=FALSE,$city=FALSE,$state=FALSE,$zip=FALSE)
+	function read_Clubs($id=FALSE,$site_fk=FALSE,$address=FALSE,$city=FALSE,$state=FALSE,$zip=FALSE,$search=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_CLUBS.' FROM CLUBS club ';
 		$sql.= ' WHERE 0=0 ';
@@ -89,6 +89,10 @@
 		// by zip
 		if($zip !== FALSE)
 		{	$sql.= " AND club.ZIP = '$zip' "; }
+
+		// search
+		if ( $search !== FALSE )
+		{ $sql.= " AND club.TITLE LIKE '%$search%' " ; }
 		
 		$sql.= ' AND club.DELETED_AT IS NULL ';
 		

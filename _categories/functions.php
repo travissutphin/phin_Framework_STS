@@ -20,7 +20,7 @@
   * @param	$id
   * @return complete query structure
 */
-	function read_Categories($id=FALSE,$site_fk=FALSE)
+	function read_Categories($id=FALSE,$site_fk=FALSE,$name=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_CATEGORIES.' FROM CATEGORIES cat ';
 		$sql.= ' WHERE 0=0 ';
@@ -32,6 +32,10 @@
 		// by site_fk
 		if($site_fk !== FALSE)
 		{	$sql.= " AND cat.SITE_FK = '$site_fk' "; }
+
+		// by name
+		if($name !== FALSE)
+		{	$sql.= " AND cat.NAME = '$name' "; }
 
 		$sql.= ' ORDER BY cat.SEQ, cat.NAME ';
 
@@ -51,7 +55,7 @@
   *	@ex.	$values_users = read_values_Categories($id='1');
   *			echo $values_users['id']; // id would be lowercase
 */
-	function read_values_Categories($id=FALSE,$site_fk=FALSE)
+	function read_values_Categories($id=FALSE,$site_fk=FALSE,$name=FALSE)
 	{
 		$sql = ' SELECT '.COLUMNS_CATEGORIES.' FROM CATEGORIES cat ';
 		$sql.= ' WHERE 0=0 ';
@@ -64,6 +68,10 @@
 		if($site_fk !== FALSE)
 		{	$sql.= " AND cat.SITE_FK = '$site_fk' "; }
 
+		// by name
+		if($name !== FALSE)
+		{	$sql.= " AND cat.NAME = '$name' "; }
+		
 		$sql.= ' ORDER BY cat.SEQ, cat.NAME ';
 
 		$result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
@@ -71,17 +79,22 @@
 		// error reporting 
 		if($result === false) 
 		{ error_report_Helpers('Error Reading Categories Values - (read_values_Categories)',$sql); }
-
+		
 		// create array of values from this record
 		$array = array();
-		$data = $_SESSION['FETCH_ARRAY']($result);
+		
+		if ( $_SESSION['NUM_ROWS']( $result ) == '1' ) {
+		
+			$data = $_SESSION['FETCH_ARRAY']($result);
 
-		foreach($data as $key => $value) // creates assocative array
-		{
-			if(!is_numeric($key))
-			{ $array = array_merge($array, array(strtolower($key) => $value)); }
-		}  
-
+			foreach($data as $key => $value) // creates assocative array
+			{
+				if(!is_numeric($key))
+				{ $array = array_merge($array, array(strtolower($key) => $value)); }
+			}  
+			
+		}
+		
 		return $array;
 	}
 /*****************************************************************/

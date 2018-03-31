@@ -14,7 +14,21 @@
 	
 		// set the SITE_ID
 		$_POST['SITE_FK'] = $_SESSION['site_id'];
-		$_POST['MEMBER_FK'] = $_SESSION['users.id'];
+		
+		// set the MEMBER_ID
+		$_POST['MEMBER_FK'] = $_SESSION['members.id'];
+		
+		// create the STUFF ALIAS
+		// get category name
+		$record_category = read_values_Categories( $id=$_POST['CATEGORY_FK'],$site_fk=$_SESSION['site_id'] ) ;
+		// add dashes to spaces in title
+		$title = create_alias_Helpers( $_POST['TITLE'] ) ; 
+		// add dashes to spacces in category
+		$category = create_alias_Helpers( $record_category['name'] ) ;
+		// put alias string together
+		$alias = $title.'-'.$category.'-'.format_Dates_Times( date('Y-m-d'),'date_only' ) ;
+		// make entire string lower case
+		$_POST['ALIAS'] = strtolower( $alias ) ;
 		
 		//** Do not add trailing / to $move_to
 
@@ -78,7 +92,7 @@
   * @param	$id
   * @return complete query structure
 */
-	function read_Stuff($id=FALSE,$site_fk=FALSE,$member_fk=FALSE,$category_fk=FALSE,$year_start_dk=FALSE,$year_end_dk=FALSE,$status_dk=FALSE,$alias=FALSE)
+	function read_Stuff($id=FALSE,$site_fk=FALSE,$member_fk=FALSE,$category_fk=FALSE,$year_start_dk=FALSE,$year_end_dk=FALSE,$status_dk=FALSE,$alias=FALSE,$search=FALSE)
 	{
 	  $sql = ' SELECT '.COLUMNS_STUFF.' FROM STUFF stuff ';
 	  $sql.= ' WHERE 0=0 ';
@@ -115,10 +129,14 @@
 	  if($alias !== FALSE)
 	  {	$sql.= " AND stuff.alias = '$alias' "; }
 	  
+		// seach query
+		if ( $search !== FALSE )
+		{ $sql.= " AND  ( stuff.TITLE LIKE '%$search%' OR stuff.DESCRIPTION_LONG LIKE '%$search%' ) " ; }
+	  
 	  $sql.= ' AND stuff.DELETED_AT IS NULL ';
 	  
 	  $sql.= ' ORDER BY stuff.CREATED_AT DESC ';
-
+	  
 	  $result = $_SESSION['QUERY']($_SESSION['connection'],$sql);
 
 	  if($result === false) 
